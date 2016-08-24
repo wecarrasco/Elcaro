@@ -38,7 +38,7 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btChooseFolder = new javax.swing.JButton();
         jlCarpetaCrearArchivo = new javax.swing.JLabel();
-        btCreateFolder = new javax.swing.JButton();
+        btCrearArchivo = new javax.swing.JButton();
         jdPrincipal = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlistTablas = new javax.swing.JList();
@@ -90,9 +90,14 @@ public class guiElcaro extends javax.swing.JFrame {
             }
         });
 
-        btCreateFolder.setBackground(new java.awt.Color(255, 255, 255));
-        btCreateFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearFolder.png"))); // NOI18N
-        btCreateFolder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btCrearArchivo.setBackground(new java.awt.Color(255, 255, 255));
+        btCrearArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearFolder.png"))); // NOI18N
+        btCrearArchivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btCrearArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btCrearArchivoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jdCrearArchivoLayout = new javax.swing.GroupLayout(jdCrearArchivo.getContentPane());
         jdCrearArchivo.getContentPane().setLayout(jdCrearArchivoLayout);
@@ -109,7 +114,7 @@ public class guiElcaro extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btChooseFolder))
-                    .addComponent(btCreateFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btCrearArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
         );
         jdCrearArchivoLayout.setVerticalGroup(
@@ -126,7 +131,7 @@ public class guiElcaro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlCarpetaCrearArchivo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btCreateFolder))
+                        .addComponent(btCrearArchivo))
                     .addComponent(jLabel7))
                 .addGap(30, 30, 30))
         );
@@ -471,6 +476,18 @@ public class guiElcaro extends javax.swing.JFrame {
         jlCarpetaCrearArchivo.setText(f.getPath());
     }//GEN-LAST:event_btChooseFolderMouseClicked
 
+    //BT Crear Archivo
+    private void btCrearArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCrearArchivoMouseClicked
+        System.out.println("BT CREAR ARCHIVO");
+        System.out.println("Aqui debe hacer una tabla nueva");
+        System.out.println("La tabla la debe agregar a la JList");
+        System.out.println("La tabla por default debe traer un campo ID");
+        System.out.println("Aqui se pregunta si quiere que sea longitud variable o fija");
+        System.out.println("Al mismo tiempo debe actualizarse la JTable que esta en la principal");
+        System.out.println("Tambien este muestra el jdialog principal");
+        System.out.println("Recordar hacer setModal, Pack, SetLocationRelativeTo(null), setVisible");
+    }//GEN-LAST:event_btCrearArchivoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -509,8 +526,8 @@ public class guiElcaro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAbrirDB;
     private javax.swing.JButton btChooseFolder;
+    private javax.swing.JButton btCrearArchivo;
     private javax.swing.JButton btCrearCampo;
-    private javax.swing.JButton btCreateFolder;
     private javax.swing.JButton btNuevoDB;
     private javax.swing.JButton btNuevoDB1;
     private javax.swing.JButton btNuevoDB2;
