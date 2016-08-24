@@ -19,6 +19,7 @@ public class guiElcaro extends javax.swing.JFrame {
     public guiElcaro() {
         initComponents();
         this.getContentPane().setBackground(Color.WHITE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -36,6 +37,7 @@ public class guiElcaro extends javax.swing.JFrame {
         btChooseFolder = new javax.swing.JButton();
         jlCarpetaCrearArchivo = new javax.swing.JLabel();
         btCreateFolder = new javax.swing.JButton();
+        jdPrincipal = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         btNuevoDB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -48,14 +50,14 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elcaro/663px-Oracle_logo_opt.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/663px-Oracle_logo_opt.png"))); // NOI18N
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setText("database.pitydb");
 
         jLabel8.setText("Nombre del archivo:");
 
-        btChooseFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elcaro/folder.png"))); // NOI18N
+        btChooseFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/folder.png"))); // NOI18N
 
         jlCarpetaCrearArchivo.setText("jLabel9");
 
@@ -68,9 +70,9 @@ public class guiElcaro extends javax.swing.JFrame {
         jdCrearArchivoLayout.setHorizontalGroup(
             jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdCrearArchivoLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(55, 55, 55)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8)
                     .addComponent(jlCarpetaCrearArchivo)
@@ -84,23 +86,33 @@ public class guiElcaro extends javax.swing.JFrame {
         jdCrearArchivoLayout.setVerticalGroup(
             jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdCrearArchivoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addGroup(jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jdCrearArchivoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btChooseFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlCarpetaCrearArchivo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btCreateFolder)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdCrearArchivoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(54, 54, 54))))
+                        .addGap(30, 30, 30)
+                        .addComponent(btCreateFolder))
+                    .addGroup(jdCrearArchivoLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel7)))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jdPrincipalLayout = new javax.swing.GroupLayout(jdPrincipal.getContentPane());
+        jdPrincipal.getContentPane().setLayout(jdPrincipalLayout);
+        jdPrincipalLayout.setHorizontalGroup(
+            jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1047, Short.MAX_VALUE)
+        );
+        jdPrincipalLayout.setVerticalGroup(
+            jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 612, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -239,6 +251,7 @@ public class guiElcaro extends javax.swing.JFrame {
         jdCrearArchivo.getContentPane().setBackground(Color.WHITE);
         jdCrearArchivo.setModal(true);
         jdCrearArchivo.pack();
+        jdCrearArchivo.setLocationRelativeTo(null);
         jdCrearArchivo.setVisible(true);
     }//GEN-LAST:event_btNuevoDBMouseClicked
 
@@ -295,6 +308,7 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JDialog jdCrearArchivo;
+    private javax.swing.JDialog jdPrincipal;
     private javax.swing.JLabel jlCarpetaCrearArchivo;
     // End of variables declaration//GEN-END:variables
 }
