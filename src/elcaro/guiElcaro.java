@@ -38,6 +38,21 @@ public class guiElcaro extends javax.swing.JFrame {
         jlCarpetaCrearArchivo = new javax.swing.JLabel();
         btCreateFolder = new javax.swing.JButton();
         jdPrincipal = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jlistTablas = new javax.swing.JList();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel10 = new javax.swing.JLabel();
+        btSave = new javax.swing.JButton();
+        jlNombreDB = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        btCrearCampo = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btNuevoDB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -104,16 +119,58 @@ public class guiElcaro extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jdPrincipalLayout = new javax.swing.GroupLayout(jdPrincipal.getContentPane());
-        jdPrincipal.getContentPane().setLayout(jdPrincipalLayout);
-        jdPrincipalLayout.setHorizontalGroup(
-            jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1047, Short.MAX_VALUE)
-        );
-        jdPrincipalLayout.setVerticalGroup(
-            jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
-        );
+        jdPrincipal.setUndecorated(true);
+        jdPrincipal.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setViewportView(jlistTablas);
+
+        jdPrincipal.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 166, 124, 477));
+
+        jLabel9.setText("TABLAS");
+        jdPrincipal.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 134, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jdPrincipal.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 166, 842, 477));
+
+        jLabel10.setText("REGISTROS");
+        jdPrincipal.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 134, -1, -1));
+
+        btSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
+        btSave.setBorder(null);
+        btSave.setBorderPainted(false);
+        jdPrincipal.getContentPane().add(btSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jlNombreDB.setText("jLabel11");
+        jdPrincipal.getContentPane().add(jlNombreDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 7, -1, -1));
+        jdPrincipal.getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 27, 1012, 10));
+        jdPrincipal.getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 118, 1012, 10));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearTabla.png"))); // NOI18N
+        jdPrincipal.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel11.setText("Crear Campo");
+        jdPrincipal.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jdPrincipal.getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 20, 90));
+
+        btCrearCampo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearCampo.png"))); // NOI18N
+        jdPrincipal.getContentPane().add(btCrearCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+
+        jLabel12.setText("Crear Tabla");
+        jdPrincipal.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -293,12 +350,18 @@ public class guiElcaro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAbrirDB;
     private javax.swing.JButton btChooseFolder;
+    private javax.swing.JButton btCrearCampo;
     private javax.swing.JButton btCreateFolder;
     private javax.swing.JButton btNuevoDB;
     private javax.swing.JButton btNuevoDB1;
     private javax.swing.JButton btNuevoDB2;
     private javax.swing.JButton btNuevoDB3;
+    private javax.swing.JButton btSave;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -306,9 +369,18 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JDialog jdCrearArchivo;
     private javax.swing.JDialog jdPrincipal;
     private javax.swing.JLabel jlCarpetaCrearArchivo;
+    private javax.swing.JLabel jlNombreDB;
+    private javax.swing.JList jlistTablas;
     // End of variables declaration//GEN-END:variables
 }
