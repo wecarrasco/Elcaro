@@ -6,6 +6,8 @@
 package elcaro;
 
 import java.awt.Color;
+import java.io.File;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -53,6 +55,15 @@ public class guiElcaro extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         btCrearCampo = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jdCrearCampo = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        tfCrearCampoNombre = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btNuevoDB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -73,8 +84,11 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel8.setText("Nombre del archivo:");
 
         btChooseFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/folder.png"))); // NOI18N
-
-        jlCarpetaCrearArchivo.setText("jLabel9");
+        btChooseFolder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btChooseFolderMouseClicked(evt);
+            }
+        });
 
         btCreateFolder.setBackground(new java.awt.Color(255, 255, 255));
         btCreateFolder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearFolder.png"))); // NOI18N
@@ -85,9 +99,9 @@ public class guiElcaro extends javax.swing.JFrame {
         jdCrearArchivoLayout.setHorizontalGroup(
             jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdCrearArchivoLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8)
                     .addComponent(jlCarpetaCrearArchivo)
@@ -101,33 +115,27 @@ public class guiElcaro extends javax.swing.JFrame {
         jdCrearArchivoLayout.setVerticalGroup(
             jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jdCrearArchivoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jdCrearArchivoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jdCrearArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btChooseFolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlCarpetaCrearArchivo)
-                        .addGap(30, 30, 30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btCreateFolder))
-                    .addGroup(jdCrearArchivoLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel7)))
-                .addContainerGap())
+                    .addComponent(jLabel7))
+                .addGap(30, 30, 30))
         );
 
         jdPrincipal.setUndecorated(true);
-        jdPrincipal.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setViewportView(jlistTablas);
 
-        jdPrincipal.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 166, 124, 477));
-
         jLabel9.setText("TABLAS");
-        jdPrincipal.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 134, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,40 +145,172 @@ public class guiElcaro extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Title 1"
+                "ID"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jdPrincipal.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 166, 842, 477));
-
         jLabel10.setText("REGISTROS");
-        jdPrincipal.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 134, -1, -1));
 
         btSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png"))); // NOI18N
         btSave.setBorder(null);
         btSave.setBorderPainted(false);
-        jdPrincipal.getContentPane().add(btSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jlNombreDB.setText("jLabel11");
-        jdPrincipal.getContentPane().add(jlNombreDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 7, -1, -1));
-        jdPrincipal.getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 27, 1012, 10));
-        jdPrincipal.getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 118, 1012, 10));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearTabla.png"))); // NOI18N
-        jdPrincipal.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        jLabel11.setText("Crear Campo");
-        jdPrincipal.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Agregar Campo");
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jdPrincipal.getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 20, 90));
 
         btCrearCampo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearCampo.png"))); // NOI18N
-        jdPrincipal.getContentPane().add(btCrearCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        btCrearCampo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btCrearCampoMouseClicked(evt);
+            }
+        });
 
         jLabel12.setText("Crear Tabla");
-        jdPrincipal.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevoRegistro.png"))); // NOI18N
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Nuevo Registro");
+
+        javax.swing.GroupLayout jdPrincipalLayout = new javax.swing.GroupLayout(jdPrincipal.getContentPane());
+        jdPrincipal.getContentPane().setLayout(jdPrincipalLayout);
+        jdPrincipalLayout.setHorizontalGroup(
+            jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+            .addGroup(jdPrincipalLayout.createSequentialGroup()
+                .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdPrincipalLayout.createSequentialGroup()
+                        .addComponent(btSave)
+                        .addGap(445, 445, 445)
+                        .addComponent(jlNombreDB))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jdPrincipalLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel9)
+                        .addGap(467, 467, 467)
+                        .addComponent(jLabel10))
+                    .addGroup(jdPrincipalLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addGroup(jdPrincipalLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel12)))
+                        .addGap(19, 19, 19)
+                        .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btCrearCampo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jdPrincipalLayout.setVerticalGroup(
+            jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdPrincipalLayout.createSequentialGroup()
+                .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btSave)
+                    .addGroup(jdPrincipalLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jlNombreDB)))
+                .addGap(6, 6, 6)
+                .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdPrincipalLayout.createSequentialGroup()
+                        .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jdPrincipalLayout.createSequentialGroup()
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16))
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jdPrincipalLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jdPrincipalLayout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(3, 3, 3)
+                                .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)))
+                            .addComponent(btCrearCampo))))
+                .addGap(6, 6, 6)
+                .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(jdPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/crearCampo.png"))); // NOI18N
+
+        jLabel14.setText("Nombre:");
+
+        jLabel15.setText("Tamaño:");
+
+        jButton3.setText("AGREGAR!");
+
+        javax.swing.GroupLayout jdCrearCampoLayout = new javax.swing.GroupLayout(jdCrearCampo.getContentPane());
+        jdCrearCampo.getContentPane().setLayout(jdCrearCampoLayout);
+        jdCrearCampoLayout.setHorizontalGroup(
+            jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdCrearCampoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addGap(32, 32, 32)
+                .addGroup(jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdCrearCampoLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfCrearCampoNombre))
+                    .addGroup(jdCrearCampoLayout.createSequentialGroup()
+                        .addGroup(jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3)
+                            .addGroup(jdCrearCampoLayout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 100, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jdCrearCampoLayout.setVerticalGroup(
+            jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdCrearCampoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(tfCrearCampoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(21, 21, 21))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -311,6 +451,25 @@ public class guiElcaro extends javax.swing.JFrame {
         jdCrearArchivo.setLocationRelativeTo(null);
         jdCrearArchivo.setVisible(true);
     }//GEN-LAST:event_btNuevoDBMouseClicked
+    
+    //BT Crear Campo
+    private void btCrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCrearCampoMouseClicked
+        jdCrearCampo.getContentPane().setBackground(Color.WHITE);
+        jdCrearCampo.setModal(true);
+        jdCrearCampo.pack();
+        jdCrearCampo.setLocationRelativeTo(null);
+        jdCrearCampo.setVisible(true);
+    }//GEN-LAST:event_btCrearCampoMouseClicked
+
+    //BT Obtener Carpeta donde se trabajara
+    private void btChooseFolderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btChooseFolderMouseClicked
+        File f;
+        JFileChooser jf = new JFileChooser();
+        jf.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        jf.showOpenDialog(this);
+        f = jf.getSelectedFile();
+        jlCarpetaCrearArchivo.setText(f.getPath());
+    }//GEN-LAST:event_btChooseFolderMouseClicked
 
     /**
      * @param args the command line arguments
@@ -358,10 +517,16 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JButton btNuevoDB3;
     private javax.swing.JButton btSave;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -375,12 +540,15 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JDialog jdCrearArchivo;
+    private javax.swing.JDialog jdCrearCampo;
     private javax.swing.JDialog jdPrincipal;
     private javax.swing.JLabel jlCarpetaCrearArchivo;
     private javax.swing.JLabel jlNombreDB;
     private javax.swing.JList jlistTablas;
+    private javax.swing.JTextField tfCrearCampoNombre;
     // End of variables declaration//GEN-END:variables
 }
