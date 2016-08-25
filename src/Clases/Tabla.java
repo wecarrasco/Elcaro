@@ -12,9 +12,25 @@ import java.util.ArrayList;
  * @author Walther
  */
 public class Tabla {
-    ArrayList <Campo> listaCampos = new ArrayList<Campo>();
 
-    public Tabla() {
+    private String nombre = "";
+    ArrayList<Campo> listaCampos = new ArrayList<Campo>();
+
+    public Tabla(String nombre, ArrayList<Campo> listaCampos) {
+        this.nombre = nombre;
+        this.listaCampos = listaCampos;
+    }
+
+    public Tabla(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public ArrayList<Campo> getListaCampos() {
@@ -29,11 +45,9 @@ public class Tabla {
     public String toString() {
         String camposDeTabla = "";
         for (Campo c : listaCampos) {
-            camposDeTabla +="\n" + c.getNombre();           
+            camposDeTabla += "\n" + c.getNombre();
         }
         return camposDeTabla;
     }
-    
 
-    
 }
