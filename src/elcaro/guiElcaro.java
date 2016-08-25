@@ -74,7 +74,7 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         tfCrearCampoNombre = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        sp_agreg_campo = new javax.swing.JSpinner();
         jButton3 = new javax.swing.JButton();
         jd_Configuracion = new javax.swing.JDialog();
         jLabel17 = new javax.swing.JLabel();
@@ -294,6 +294,11 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel15.setText("Tamaño:");
 
         jButton3.setText("AGREGAR!");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jdCrearCampoLayout = new javax.swing.GroupLayout(jdCrearCampo.getContentPane());
         jdCrearCampo.getContentPane().setLayout(jdCrearCampoLayout);
@@ -314,7 +319,7 @@ public class guiElcaro extends javax.swing.JFrame {
                             .addGroup(jdCrearCampoLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(sp_agreg_campo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 100, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -330,7 +335,7 @@ public class guiElcaro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sp_agreg_campo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(21, 21, 21))
@@ -674,15 +679,19 @@ public class guiElcaro extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
         if (bl == true) {
-            System.out.println("Delete File Succesfully...");
+            JOptionPane.showMessageDialog(null,"Archivo Borrado");
         } else {
-            System.err.println("Faile for delete file...!");
+            JOptionPane.showMessageDialog(null,"No se pudo borrar archivo");
         }
-// you need to use try-catch for error happen it's alert to you know
 
-// check bl
 
     }//GEN-LAST:event_btNuevoDB1MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        String nom_campo=tfCrearCampoNombre.getText();
+        int longitud= (int) sp_agreg_campo.getValue();
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -763,7 +772,6 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JDialog jdCrearArchivo;
     private javax.swing.JDialog jdCrearCampo;
@@ -774,6 +782,7 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JList jlistTablas;
     private javax.swing.JRadioButton rb_config_fija;
     private javax.swing.JRadioButton rb_config_var;
+    private javax.swing.JSpinner sp_agreg_campo;
     private javax.swing.JTextField tfCrearCampoNombre;
     private javax.swing.JTextField txt_config_nom;
     private javax.swing.JTextField txt_crear_archivo_nombre;
