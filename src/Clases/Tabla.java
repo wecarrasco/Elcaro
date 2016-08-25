@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Walther
- */
 public class Tabla {
 
     private String nombre = "";
-    ArrayList<Campo> listaCampos = new ArrayList<Campo>();
+    ArrayList<Registro> listaCampos = new ArrayList<Registro>();
+    int posicion;
 
-    public Tabla(String nombre, ArrayList<Campo> listaCampos) {
+    public Tabla(String nombre, ArrayList<Registro> listaCampos, int posicion) {
         this.nombre = nombre;
         this.listaCampos = listaCampos;
+        this.posicion = posicion;
     }
 
     public Tabla(String nombre) {
@@ -33,19 +26,29 @@ public class Tabla {
         this.nombre = nombre;
     }
 
-    public ArrayList<Campo> getListaCampos() {
+    public ArrayList<Registro> getListaCampos() {
         return listaCampos;
     }
 
-    public void setListaCampos(ArrayList<Campo> listaCampos) {
+    public void setListaCampos(ArrayList<Registro> listaCampos) {
         this.listaCampos = listaCampos;
     }
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
+    
+    
 
     @Override
     public String toString() {
         String camposDeTabla = "";
-        for (Campo c : listaCampos) {
-            camposDeTabla += "\n" + c.getNombre();
+        for (Registro r : listaCampos) {
+            //camposDeTabla += "\n" + c.getNombre();
         }
         return camposDeTabla;
     }

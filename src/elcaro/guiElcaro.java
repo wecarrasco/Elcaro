@@ -75,7 +75,7 @@ public class guiElcaro extends javax.swing.JFrame {
         tfCrearCampoNombre = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         sp_agreg_campo = new javax.swing.JSpinner();
-        jButton3 = new javax.swing.JButton();
+        btAgregarCrearCampo = new javax.swing.JButton();
         jd_Configuracion = new javax.swing.JDialog();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -90,8 +90,8 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btAbrirDB = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btNuevoDB1 = new javax.swing.JButton();
-        btNuevoDB2 = new javax.swing.JButton();
+        btBorrarDB = new javax.swing.JButton();
+        btLockDB = new javax.swing.JButton();
         btNuevoDB3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -293,10 +293,10 @@ public class guiElcaro extends javax.swing.JFrame {
 
         jLabel15.setText("Tamaño:");
 
-        jButton3.setText("AGREGAR!");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btAgregarCrearCampo.setText("AGREGAR!");
+        btAgregarCrearCampo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                btAgregarCrearCampoMouseClicked(evt);
             }
         });
 
@@ -315,7 +315,7 @@ public class guiElcaro extends javax.swing.JFrame {
                         .addComponent(tfCrearCampoNombre))
                     .addGroup(jdCrearCampoLayout.createSequentialGroup()
                         .addGroup(jdCrearCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3)
+                            .addComponent(btAgregarCrearCampo)
                             .addGroup(jdCrearCampoLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,7 +337,7 @@ public class guiElcaro extends javax.swing.JFrame {
                     .addComponent(jLabel15)
                     .addComponent(sp_agreg_campo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(btAgregarCrearCampo)
                 .addGap(21, 21, 21))
         );
 
@@ -441,24 +441,24 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel3.setText("Open DB");
 
-        btNuevoDB1.setBackground(new java.awt.Color(255, 255, 255));
-        btNuevoDB1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dbErase.png"))); // NOI18N
-        btNuevoDB1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btNuevoDB1.setBorderPainted(false);
-        btNuevoDB1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btNuevoDB1.setName(""); // NOI18N
-        btNuevoDB1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btBorrarDB.setBackground(new java.awt.Color(255, 255, 255));
+        btBorrarDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dbErase.png"))); // NOI18N
+        btBorrarDB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btBorrarDB.setBorderPainted(false);
+        btBorrarDB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btBorrarDB.setName(""); // NOI18N
+        btBorrarDB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btNuevoDB1MouseClicked(evt);
+                btBorrarDBMouseClicked(evt);
             }
         });
 
-        btNuevoDB2.setBackground(new java.awt.Color(255, 255, 255));
-        btNuevoDB2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dbLock.png"))); // NOI18N
-        btNuevoDB2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btNuevoDB2.setBorderPainted(false);
-        btNuevoDB2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btNuevoDB2.setName(""); // NOI18N
+        btLockDB.setBackground(new java.awt.Color(255, 255, 255));
+        btLockDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dbLock.png"))); // NOI18N
+        btLockDB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btLockDB.setBorderPainted(false);
+        btLockDB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btLockDB.setName(""); // NOI18N
 
         btNuevoDB3.setBackground(new java.awt.Color(255, 255, 255));
         btNuevoDB3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dbInfo.png"))); // NOI18N
@@ -498,9 +498,9 @@ public class guiElcaro extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btNuevoDB1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btBorrarDB, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btNuevoDB2, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btLockDB, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btNuevoDB, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -530,8 +530,8 @@ public class guiElcaro extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btNuevoDB1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btNuevoDB2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btBorrarDB, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btLockDB, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -592,6 +592,8 @@ public class guiElcaro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btCrearArchivoMouseClicked
 
+    
+    //BT para configurar la creacion de la BD
     private void btn_config_crear_dbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_config_crear_dbMouseClicked
         // TODO add your handling code here:
         String tipo = "";
@@ -603,8 +605,8 @@ public class guiElcaro extends javax.swing.JFrame {
         String nombre = txt_config_nom.getText() + ".pitydb";
         String nom_campo = "ID";
         int longitud = 5;
-        campos.add(new Campo(nom_campo, longitud));
-        tablas.add(new Tabla("Tabla 1", campos));
+        campos.add(new Campo(nom_campo, longitud, "String"));
+        //tablas.add(new Tabla("Tabla 1", campos, 0));
         File archivo;
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -635,6 +637,8 @@ public class guiElcaro extends javax.swing.JFrame {
         jdPrincipal.setVisible(true);
     }//GEN-LAST:event_btn_config_crear_dbMouseClicked
 
+    
+    //BT para abrir una bd
     private void btAbrirDBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAbrirDBMouseClicked
         // TODO add your handling code here:
         File fichero = null;
@@ -660,8 +664,10 @@ public class guiElcaro extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btAbrirDBMouseClicked
+    
 
-    private void btNuevoDB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btNuevoDB1MouseClicked
+    //BT para borrar una base de datos
+    private void btBorrarDBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btBorrarDBMouseClicked
         // TODO add your handling code here:
         boolean bl = false;
         File fichero = null;
@@ -685,13 +691,14 @@ public class guiElcaro extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btNuevoDB1MouseClicked
+    }//GEN-LAST:event_btBorrarDBMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    //BT para agregar un campo nuevo a una tabla
+    private void btAgregarCrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarCrearCampoMouseClicked
         // TODO add your handling code here:
         String nom_campo=tfCrearCampoNombre.getText();
         int longitud= (int) sp_agreg_campo.getValue();
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_btAgregarCrearCampoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -735,19 +742,19 @@ public class guiElcaro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAbrirDB;
+    private javax.swing.JButton btAgregarCrearCampo;
+    private javax.swing.JButton btBorrarDB;
     private javax.swing.JButton btChooseFolder;
     private javax.swing.JButton btCrearArchivo;
     private javax.swing.JButton btCrearCampo;
+    private javax.swing.JButton btLockDB;
     private javax.swing.JButton btNuevoDB;
-    private javax.swing.JButton btNuevoDB1;
-    private javax.swing.JButton btNuevoDB2;
     private javax.swing.JButton btNuevoDB3;
     private javax.swing.JButton btSave;
     private javax.swing.JButton btn_config_crear_db;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

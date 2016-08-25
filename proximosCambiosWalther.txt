@@ -1,0 +1,23 @@
+- Programar boton de agregar campo y que actualize la jtable
+
+- Programar agregar registro
+
+- Programar agregar tabla
+
+- Programar el save del archivo
+
+- Programar el Open del archivo
+
+- Programar el Modificar de un registro (Con botón o Metadown)
+
+- Programar eliminar registro (Con botón o Metadown)
+
+- Programar un boton de buscar
+
+- AGREGAR Y PROGRAMAR DIAGRAMA E/R (JGRAPHX)
+
+- Programar el bloqueo de archivo:
+	Para este hay que agregar un atributo al archivo
+
+- El archivo mismo debe guardar su propia configuracion
+
