@@ -8,6 +8,7 @@ package elcaro;
 import Clases.Campo;
 import Clases.Tabla;
 import java.awt.Color;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -25,6 +27,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Walther
  */
 public class guiElcaro extends javax.swing.JFrame {
+
+    File f;
+    JFileChooser jf = new JFileChooser();
 
     /**
      * Creates new form guiElcaro
@@ -81,10 +86,23 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         rb_config_var = new javax.swing.JRadioButton();
         rb_config_fija = new javax.swing.JRadioButton();
-        jLabel21 = new javax.swing.JLabel();
-        txt_config_nom = new javax.swing.JTextField();
         btn_config_crear_db = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jd_help = new javax.swing.JDialog();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btNuevoDB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -100,7 +118,7 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/663px-Oracle_logo_opt.png"))); // NOI18N
 
         txt_crear_archivo_nombre.setBackground(new java.awt.Color(204, 204, 204));
-        txt_crear_archivo_nombre.setText("database.pitydb");
+        txt_crear_archivo_nombre.setText("database");
 
         jLabel8.setText("Nombre del archivo:");
 
@@ -352,8 +370,6 @@ public class guiElcaro extends javax.swing.JFrame {
         rb_config_fija.setSelected(true);
         rb_config_fija.setText("Fija");
 
-        jLabel21.setText("Nombre del archivo:");
-
         btn_config_crear_db.setText("Crear Archivo");
         btn_config_crear_db.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -374,18 +390,13 @@ public class guiElcaro extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel18)
                         .addGap(18, 18, 18)
-                        .addComponent(rb_config_fija)
-                        .addGap(10, 10, 10)
-                        .addComponent(rb_config_var)))
+                        .addGroup(jd_ConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_config_crear_db)
+                            .addGroup(jd_ConfiguracionLayout.createSequentialGroup()
+                                .addComponent(rb_config_fija)
+                                .addGap(10, 10, 10)
+                                .addComponent(rb_config_var)))))
                 .addContainerGap(126, Short.MAX_VALUE))
-            .addGroup(jd_ConfiguracionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel21)
-                .addGap(18, 18, 18)
-                .addGroup(jd_ConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_config_crear_db)
-                    .addComponent(txt_config_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jd_ConfiguracionLayout.setVerticalGroup(
             jd_ConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,13 +408,128 @@ public class guiElcaro extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(rb_config_var)
                     .addComponent(rb_config_fija))
-                .addGap(18, 18, 18)
-                .addGroup(jd_ConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(txt_config_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(btn_config_crear_db)
-                .addGap(27, 27, 27))
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        jLabel19.setText("AYUDA!!!");
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elcaro/bdnew_help.png"))); // NOI18N
+
+        jLabel21.setText("CREAR NUEVA BD");
+
+        jLabel22.setText("jLabel22");
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elcaro/bdopen_help.png"))); // NOI18N
+
+        jLabel24.setText("ABRIR BD");
+
+        jLabel25.setText("jLabel25");
+
+        jLabel26.setText("jLabel25");
+
+        jLabel27.setText("BORRAR BD");
+
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elcaro/bddelete_help.png"))); // NOI18N
+
+        jLabel29.setText("jLabel25");
+
+        jLabel30.setText("SEGURIDAD BD");
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/elcaro/bdsec_help.png"))); // NOI18N
+
+        jButton4.setText("jButton4");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_helpLayout = new javax.swing.GroupLayout(jd_help.getContentPane());
+        jd_help.getContentPane().setLayout(jd_helpLayout);
+        jd_helpLayout.setHorizontalGroup(
+            jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_helpLayout.createSequentialGroup()
+                .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(jLabel19))
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)))
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25)))
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel26)))
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel29)))
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(jButton4)))
+                .addContainerGap(315, Short.MAX_VALUE))
+        );
+        jd_helpLayout.setVerticalGroup(
+            jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_helpLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel22)))
+                .addGap(18, 18, 18)
+                .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel25)))
+                .addGap(18, 18, 18)
+                .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28)
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel26)))
+                .addGap(18, 18, 18)
+                .addGroup(jd_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addGroup(jd_helpLayout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel29)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(79, 79, 79))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -424,7 +550,7 @@ public class guiElcaro extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabel2.setText("Create New DB");
+        jLabel2.setText("Crear nueva BD");
 
         btAbrirDB.setBackground(new java.awt.Color(255, 255, 255));
         btAbrirDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dbOpen.png"))); // NOI18N
@@ -439,7 +565,7 @@ public class guiElcaro extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabel3.setText("Open DB");
+        jLabel3.setText("Abrir BD");
 
         btBorrarDB.setBackground(new java.awt.Color(255, 255, 255));
         btBorrarDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dbErase.png"))); // NOI18N
@@ -466,15 +592,20 @@ public class guiElcaro extends javax.swing.JFrame {
         btNuevoDB3.setBorderPainted(false);
         btNuevoDB3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btNuevoDB3.setName(""); // NOI18N
+        btNuevoDB3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btNuevoDB3MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabel4.setText("Erase DB");
+        jLabel4.setText("Borrar BD");
 
         jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabel5.setText("Lock DB");
+        jLabel5.setText("Seguridad BD");
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jLabel6.setText("HELP!!!");
+        jLabel6.setText("AYUDA!!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -566,8 +697,7 @@ public class guiElcaro extends javax.swing.JFrame {
 
     //BT Obtener Carpeta donde se trabajara
     private void btChooseFolderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btChooseFolderMouseClicked
-        File f;
-        JFileChooser jf = new JFileChooser();
+
         jf.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         jf.showOpenDialog(this);
         f = jf.getSelectedFile();
@@ -581,10 +711,9 @@ public class guiElcaro extends javax.swing.JFrame {
 //        System.out.println("La tabla la debe agregar a la JList");
 //        System.out.println("La tabla por default debe traer un campo ID");
 //        System.out.println("Aqui se pregunta si quiere que sea longitud variable o fija");
-        System.out.println("Al mismo tiempo debe actualizarse la JTable que esta en la principal");
+//        System.out.println("Al mismo tiempo debe actualizarse la JTable que esta en la principal");
 //        System.out.println("Tambien este muestra el jdialog principal");
 //        System.out.println("Recordar hacer setModal, Pack, SetLocationRelativeTo(null), setVisible");
-        txt_config_nom.setText(txt_crear_archivo_nombre.getText());
         jd_Configuracion.setModal(true);
         jd_Configuracion.pack();
         jd_Configuracion.setLocationRelativeTo(null);
@@ -602,21 +731,39 @@ public class guiElcaro extends javax.swing.JFrame {
         } else {
             tipo = "Variable";
         }
-        String nombre = txt_config_nom.getText() + ".pitydb";
         String nom_campo = "ID";
+        String nom = txt_crear_archivo_nombre.getText();
         int longitud = 5;
         campos.add(new Campo(nom_campo, longitud, "String"));
         //tablas.add(new Tabla("Tabla 1", campos, 0));
         File archivo;
         FileWriter fw = null;
         BufferedWriter bw = null;
+        f = jf.getSelectedFile();
+//        JFileChooser jfc = new JFileChooser();
+//        int result = jfc.showSaveDialog(this);
+//        if (result == JFileChooser.CANCEL_OPTION) {
+//            JOptionPane.showMessageDialog(null, "No guardo archivo");
+//        }
+//        File file = jfc.getSelectedFile();
+//        try {
+//            BufferedWriter bw = new BufferedWriter(new FileWriter(f + ".pitydb"));
+//            bw.write(tipo + ",");
+//            bw.close();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(
+//                    this,
+//                    e.getMessage(),
+//                    "File Error",
+//                    JOptionPane.ERROR_MESSAGE
+//            );
+//        }
         try {
-            archivo = new File(nombre);
+            archivo = new File(f.getPath() + "/" + nom + ".pitydb");
             fw = new FileWriter(archivo, true);
             bw = new BufferedWriter(fw);
             bw.write(tipo + ",");
             bw.flush();
-            JOptionPane.showMessageDialog(null, "Archivo creado correctamente");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -625,16 +772,20 @@ public class guiElcaro extends javax.swing.JFrame {
                 fw.close();
             } catch (IOException ex) {
             }
+            DefaultListModel modelo = new DefaultListModel();
+            for (int i = 0;
+                    i < tablas.size();
+                    i++) {
+                modelo.addElement(tablas.get(i).getNombre());
+            }
+
+            jlistTablas.setModel(modelo);
+            jlNombreDB.setText(nom);
+            jdPrincipal.setModal(true);
+            jdPrincipal.pack();
+            jdPrincipal.setLocationRelativeTo(null);
+            jdPrincipal.setVisible(true);
         }
-        DefaultListModel modelo = new DefaultListModel();
-        for (int i = 0; i < tablas.size(); i++) {
-            modelo.addElement(tablas.get(i).getNombre());
-        }
-        jlistTablas.setModel(modelo);
-        jdPrincipal.setModal(true);
-        jdPrincipal.pack();
-        jdPrincipal.setLocationRelativeTo(null);
-        jdPrincipal.setVisible(true);
     }//GEN-LAST:event_btn_config_crear_dbMouseClicked
 
     
@@ -657,12 +808,17 @@ public class guiElcaro extends javax.swing.JFrame {
 //                while((linea=br.readLine())!=null){
 //                    ta_1.append(linea+"\n");
 //                }
+                jlNombreDB.setText(fichero.getName());
             } else {
                 JOptionPane.showMessageDialog(null, "Archivo no valido");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        jdPrincipal.setModal(true);
+        jdPrincipal.pack();
+        jdPrincipal.setLocationRelativeTo(null);
+        jdPrincipal.setVisible(true);
     }//GEN-LAST:event_btAbrirDBMouseClicked
     
 
@@ -685,20 +841,35 @@ public class guiElcaro extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
         if (bl == true) {
-            JOptionPane.showMessageDialog(null,"Archivo Borrado");
+            JOptionPane.showMessageDialog(null, "Archivo Borrado");
         } else {
-            JOptionPane.showMessageDialog(null,"No se pudo borrar archivo");
+            JOptionPane.showMessageDialog(null, "No se pudo borrar archivo");
         }
 
 
     }//GEN-LAST:event_btBorrarDBMouseClicked
 
     //BT para agregar un campo nuevo a una tabla
-    private void btAgregarCrearCampoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarCrearCampoMouseClicked
+    private void btAgregarCrearCampoMouseClicked(java.awt.event.MouseEvent evt) {                                                 
         // TODO add your handling code here:
-        String nom_campo=tfCrearCampoNombre.getText();
-        int longitud= (int) sp_agreg_campo.getValue();
-    }//GEN-LAST:event_btAgregarCrearCampoMouseClicked
+
+        String nom_campo = tfCrearCampoNombre.getText();
+        int longitud = (int) sp_agreg_campo.getValue();
+    }                                     
+
+
+    private void btNuevoDB3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btNuevoDB3MouseClicked
+        // TODO add your handling code here:        
+        jd_help.setModal(true);
+        jd_help.pack();
+        jd_help.setLocationRelativeTo(null);
+        jd_help.setVisible(true);
+    }//GEN-LAST:event_btNuevoDB3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+       jd_help.setVisible(false);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -755,6 +926,8 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -765,9 +938,21 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -784,6 +969,7 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JDialog jdCrearCampo;
     private javax.swing.JDialog jdPrincipal;
     private javax.swing.JDialog jd_Configuracion;
+    private javax.swing.JDialog jd_help;
     private javax.swing.JLabel jlCarpetaCrearArchivo;
     private javax.swing.JLabel jlNombreDB;
     private javax.swing.JList jlistTablas;
@@ -791,7 +977,6 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_config_var;
     private javax.swing.JSpinner sp_agreg_campo;
     private javax.swing.JTextField tfCrearCampoNombre;
-    private javax.swing.JTextField txt_config_nom;
     private javax.swing.JTextField txt_crear_archivo_nombre;
     // End of variables declaration//GEN-END:variables
     public static ArrayList<Tabla> tablas = new ArrayList();
