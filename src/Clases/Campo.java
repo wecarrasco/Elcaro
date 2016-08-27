@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Clases;
 
-/**
- *
- * @author Walther
- */
 public class Campo {
     String nombre;
     int tamano;
+    String tipo;
 
-    public Campo(String nombre, int tamano) {
+    public Campo(String nombre, int tamano, String tipo) {
         this.nombre = nombre;
         this.tamano = tamano;
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -33,6 +26,15 @@ public class Campo {
     public void setTamano(int tamano) {
         this.tamano = tamano;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
     
     
 }
