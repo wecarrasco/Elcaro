@@ -1,6 +1,9 @@
 package Clases;
 
-public class Campo {
+import java.io.Serializable;
+
+public class Campo implements Serializable {
+    private static final long serialVersionUID = 666L;
     String nombre;
     int tamano;
     String tipo;

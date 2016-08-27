@@ -1,17 +1,18 @@
 package Clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Tabla {
-
+public class Tabla implements Serializable {
+    private static final long serialVersionUID = 666L;
     private String nombre = "";
-    ArrayList<Registro> listaCampos = new ArrayList<Registro>();
-    int posicion;
+    ArrayList <Campo> listaCampos = new ArrayList<Campo>();
+    ArrayList<Registro> listaRegistros = new ArrayList<Registro>();
 
-    public Tabla(String nombre, ArrayList<Registro> listaCampos, int posicion) {
+
+    public Tabla(String nombre, Campo c) {
         this.nombre = nombre;
-        this.listaCampos = listaCampos;
-        this.posicion = posicion;
+        listaCampos.add(c);
     }
 
     public Tabla(String nombre) {
@@ -27,27 +28,21 @@ public class Tabla {
     }
 
     public ArrayList<Registro> getListaCampos() {
-        return listaCampos;
+        return listaRegistros;
     }
 
-    public void setListaCampos(ArrayList<Registro> listaCampos) {
-        this.listaCampos = listaCampos;
+    public void setListaCampos(ArrayList<Registro> listaRegistros) {
+        this.listaRegistros = listaRegistros;
     }
 
-    public int getPosicion() {
-        return posicion;
-    }
 
-    public void setPosicion(int posicion) {
-        this.posicion = posicion;
-    }
     
     
 
     @Override
     public String toString() {
         String camposDeTabla = "";
-        for (Registro r : listaCampos) {
+        for (Registro r : listaRegistros) {
             //camposDeTabla += "\n" + c.getNombre();
         }
         return camposDeTabla;

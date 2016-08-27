@@ -1,0 +1,40 @@
+btCrearArchivoMouseClicked
+	Validar que el usuario haya elegido una carpeta y que no exista un archivo con ese nombre
+
+jd_configuracion
+	agregar opcion de como quiere que se dividan los campos, delimitadores, etc
+
+boton de save
+	Ya esta la clase bits que nos ayudara a escribir y leer, usarla para el save
+
+boton de open
+	utilizar clase bits
+	para probarlo agrega un registro nuevo a la fuerza, salvalo y despues volvelo a abrir
+
+jdPrincipal
+	cuando abra jdPrincipal que se cierren las ventanas anteriores excepto la primerita
+	Hacer que cuando apriete el boton de equis que pida al usuario si quiere guardar o no y que cuando cierre que limpie el arraylist del codio principal
+	Agregar boton de modificar registro (ya esta el icono en la carpeta)
+	Agregar boton de eliminar registro (me mandaran el icono despues)
+	Programar boton de agregar registro
+
+Clase Registro
+	agregar int posicion (variable, constructor, getters&setters)
+	
+Clase Tabla
+	implementar pila de enteros
+	una vez implementada, programar un boton de eliminar registro y guardar su posicion en pila
+
+Codigo Principal
+	Eliminar el arraylist de campo, no es necesario
+
+Clase Archivo
+	Agregar metodo para agregar tablas
+
+
+
+*Cambios hechos*
+- Elimine el entero Posicion que estaba en la clase tabla, este debe ir en clase registro
+- Una tabla tiene un arreglo de campos
+
+
