@@ -17,7 +17,7 @@ public class Tabla implements Serializable {
 
     public Tabla(String nombre) {
         this.nombre = nombre;
-    }
+    }    
 
     public String getNombre() {
         return nombre;
