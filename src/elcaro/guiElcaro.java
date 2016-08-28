@@ -134,7 +134,6 @@ public class guiElcaro extends javax.swing.JFrame {
         btn_RegElim = new javax.swing.JButton();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jd_sec = new javax.swing.JDialog();
-        jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         btNuevoDB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -754,17 +753,6 @@ public class guiElcaro extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1071,7 +1059,7 @@ public class guiElcaro extends javax.swing.JFrame {
         Tabla tabla = (Tabla) cb_camp_tab.getSelectedItem();
         String nom_campo = tfCrearCampoNombre.getText();
         int longitud = (int) sp_agreg_campo.getValue();
-        
+
     }
 
 
@@ -1120,7 +1108,7 @@ public class guiElcaro extends javax.swing.JFrame {
         for (int i = 0; i < tablas.size(); i++) {
             modelo.addElement(tablas.get(i).getNombre());
         }
-        cb_RegElim_tab.setModel(modelo);    
+        cb_RegElim_tab.setModel(modelo);
         jd_reg_elim.setModal(true);
         jd_reg_elim.pack();
         jd_reg_elim.setLocationRelativeTo(null);
@@ -1132,6 +1120,14 @@ public class guiElcaro extends javax.swing.JFrame {
         int dialogbutton = JOptionPane.YES_NO_OPTION;
         dialogbutton = JOptionPane.showConfirmDialog(null, "Quiere guardar todos los cambios hechos?", "Advertencia", dialogbutton);
         if (dialogbutton == JOptionPane.YES_OPTION) {
+            for (int i = 0; i < tablas.size(); i++) {
+                Tabla t = tablas.get(i);
+                try {
+                    b.escribir(jlCarpetaCrearArchivo.getText() + "\\" + txt_crear_archivo_nombre.getText() + ".pitydb", new Archivo(t));
+                } catch (IOException ex) {
+                    Logger.getLogger(guiElcaro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             jdPrincipal.setVisible(false);
             tablas.clear();
         } else {
@@ -1238,20 +1234,20 @@ public class guiElcaro extends javax.swing.JFrame {
 
     private void cb_RegElim_tabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_RegElim_tabItemStateChanged
         // TODO add your handling code here:
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        int pos=cb_RegElim_tab.getSelectedIndex();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        int pos = cb_RegElim_tab.getSelectedIndex();
         for (int i = 0; i < tablas.size(); i++) {
-            if(pos==i){
+            if (pos == i) {
                 modelo.addElement(tablas.get(i).getRegistros());
             }
-        }       
-        cb_RegElim_reg.setModel(modelo);  
+        }
+        cb_RegElim_reg.setModel(modelo);
     }//GEN-LAST:event_cb_RegElim_tabItemStateChanged
 
     private void btn_RegElimMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegElimMouseClicked
         // TODO add your handling code here:
-        int pos1=cb_RegElim_reg.getSelectedIndex();
-        Posicion pos= new Posicion(pos1); 
+        int pos1 = cb_RegElim_reg.getSelectedIndex();
+        Posicion pos = new Posicion(pos1);
         pila.push(pos);
     }//GEN-LAST:event_btn_RegElimMouseClicked
 
@@ -1322,7 +1318,6 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1397,7 +1392,7 @@ public class guiElcaro extends javax.swing.JFrame {
     public static ArrayList<Campo> campos = new ArrayList();
     public static ArrayList<Registro> registros = new ArrayList();
     bits b = new bits();
-    PilaPosicion pila=new PilaPosicion();
+    PilaPosicion pila = new PilaPosicion();
 //    try {
 //            archivo = new File(f.getPath() + "/" + nom + ".pitydb");
 //            fw = new FileWriter(archivo, true);
