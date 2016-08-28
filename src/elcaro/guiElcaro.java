@@ -31,6 +31,7 @@ public class guiElcaro extends javax.swing.JFrame {
     File f;
     JFileChooser jf = new JFileChooser();
     int Contadordeposicionpararegistro;
+    String separador = "";
 
     /**
      * Creates new form guiElcaro
@@ -950,7 +951,7 @@ public class guiElcaro extends javax.swing.JFrame {
         } else {
             tipo = "Variable";
         }
-        String separador = "";
+
         if (rb_sep_del.isSelected()) {
             separador = "Delimitadores";
         } else if (rb_sep_exp.isSelected()) {
@@ -1128,11 +1129,51 @@ public class guiElcaro extends javax.swing.JFrame {
                     Logger.getLogger(guiElcaro.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            //ESTO ES PARA GUARDAR EN TEXTO PARA EL SAVE CON EL TIPO POR SI NO FUNCIONA EL DE ARRIBA
+            File archivo;
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            f = jf.getSelectedFile();
+            try {
+                archivo = new File(f.getPath() + "/" + "nombre del archivo" + ".pitydb");
+                fw = new FileWriter(archivo, true);
+                bw = new BufferedWriter(fw);
+                if (separador.contentEquals("Delimitador")) {
+                    for (int i = 0; i < tablas.size(); i++) {
+                        for (int j = 0; j < tablas.get(i).getRegistros().size(); j++) {
+                            bw.write(tablas.get(i).getRegistros().get(j).getDato() + ",");
+                        }
+                    }
+                } else if (separador.contentEquals("Indicador")) {
+                    for (int i = 0; i < tablas.size(); i++) {
+                        for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
+                            bw.write(tablas.get(i).getCampos().get(j).getTamano() + tablas.get(i).getRegistros().get(j).getDato());
+                        }
+                    }
+                } else if (separador.contentEquals("Expresiones")) {
+                    for (int i = 0; i < tablas.size(); i++) {
+                        for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
+                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "=" + tablas.get(i).getRegistros().get(j).getDato());
+                        }
+                    }
+                }
+                bw.flush();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    bw.close();
+                    fw.close();
+                } catch (IOException ex) {
+                }
+            }
             jdPrincipal.setVisible(false);
             tablas.clear();
+            Contadordeposicionpararegistro = 0;
         } else {
             jdPrincipal.setVisible(false);
             tablas.clear();
+            Contadordeposicionpararegistro = 0;
         }
 
     }//GEN-LAST:event_jButton6MouseClicked
@@ -1393,18 +1434,5 @@ public class guiElcaro extends javax.swing.JFrame {
     public static ArrayList<Registro> registros = new ArrayList();
     bits b = new bits();
     PilaPosicion pila = new PilaPosicion();
-//    try {
-//            archivo = new File(f.getPath() + "/" + nom + ".pitydb");
-//            fw = new FileWriter(archivo, true);
-//            bw = new BufferedWriter(fw);
-//            bw.write(tipo + ",");
-//            bw.flush();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                bw.close();
-//                fw.close();
-//            } catch (IOException ex) {
-//            }
+
 }

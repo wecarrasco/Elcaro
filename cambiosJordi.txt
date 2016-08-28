@@ -6,7 +6,7 @@ jd_configuracion
 	//////////////////////////////////////////////////////////agregar opcion de como quiere que se dividan los campos, delimitadores, etc
 
 boton de save
-	Ya esta la clase bits que nos ayudara a escribir y leer, usarla para el save
+	//////////////////////////////////////////////////////////Ya esta la clase bits que nos ayudara a escribir y leer, usarla para el save
 
 boton de open
 	utilizar clase bits
@@ -24,7 +24,7 @@ Clase Registro
 	
 Clase Tabla
 	//////////////////////////////////////////////////////////implementar pila de enteros
-	una vez implementada, programar un boton de eliminar registro y guardar su posicion en pila
+	//////////////////////////////////////////////////////////una vez implementada, programar un boton de eliminar registro y guardar su posicion en pila
 
 Codigo Principal
 	//////////////////////////////////////////////////////////Eliminar el arraylist de campo, no es necesario
