@@ -21,6 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFormattedTextField.AbstractFormatterFactory;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,7 @@ public class guiElcaro extends javax.swing.JFrame {
 
     File f;
     JFileChooser jf = new JFileChooser();
+    int Contadordeposicionpararegistro;
 
     /**
      * Creates new form guiElcaro
@@ -115,9 +117,24 @@ public class guiElcaro extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jd_reg_modif = new javax.swing.JDialog();
         jd_reg_agre = new javax.swing.JDialog();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        cb_reg_tab = new javax.swing.JComboBox();
+        cb_reg_cam = new javax.swing.JComboBox();
+        txt_reg_dato = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         jd_reg_elim = new javax.swing.JDialog();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        cb_RegElim_tab = new javax.swing.JComboBox();
+        jLabel42 = new javax.swing.JLabel();
+        cb_RegElim_reg = new javax.swing.JComboBox();
+        btn_RegElim = new javax.swing.JButton();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jd_sec = new javax.swing.JDialog();
+        jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         btNuevoDB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -598,26 +615,132 @@ public class guiElcaro extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jLabel36.setText("Agregar Registro");
+
+        jLabel37.setText("Seleccionar Tabla:");
+
+        jLabel38.setText("Seleccionar Campo:");
+
+        jLabel39.setText("Dato a Guardar:");
+
+        jButton7.setText("Guardar Registro");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_reg_agreLayout = new javax.swing.GroupLayout(jd_reg_agre.getContentPane());
         jd_reg_agre.getContentPane().setLayout(jd_reg_agreLayout);
         jd_reg_agreLayout.setHorizontalGroup(
             jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_reg_agreLayout.createSequentialGroup()
+                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jd_reg_agreLayout.createSequentialGroup()
+                            .addGap(156, 156, 156)
+                            .addComponent(jLabel36))
+                        .addGroup(jd_reg_agreLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel37)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cb_reg_tab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jd_reg_agreLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel38)
+                                .addComponent(jLabel39))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_reg_dato)
+                                .addComponent(cb_reg_cam, 0, 183, Short.MAX_VALUE))))
+                    .addGroup(jd_reg_agreLayout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jButton7)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jd_reg_agreLayout.setVerticalGroup(
             jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_reg_agreLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel36)
+                .addGap(18, 18, 18)
+                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(cb_reg_tab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(cb_reg_cam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(txt_reg_dato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addComponent(jButton7)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
+
+        jLabel40.setText("Eliminar Registro");
+
+        jLabel41.setText("Tabla:");
+
+        cb_RegElim_tab.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_RegElim_tabItemStateChanged(evt);
+            }
+        });
+
+        jLabel42.setText("Registros:");
+
+        btn_RegElim.setText("Eliminar Registro");
+        btn_RegElim.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_RegElimMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_reg_elimLayout = new javax.swing.GroupLayout(jd_reg_elim.getContentPane());
         jd_reg_elim.getContentPane().setLayout(jd_reg_elimLayout);
         jd_reg_elimLayout.setHorizontalGroup(
             jd_reg_elimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_reg_elimLayout.createSequentialGroup()
+                .addGroup(jd_reg_elimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_reg_elimLayout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jLabel40))
+                    .addGroup(jd_reg_elimLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_reg_elimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_reg_elimLayout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addGap(30, 30, 30)
+                                .addComponent(cb_RegElim_tab, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_reg_elimLayout.createSequentialGroup()
+                                .addComponent(jLabel42)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_RegElim_reg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jd_reg_elimLayout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(btn_RegElim)))
+                .addGap(120, 140, Short.MAX_VALUE))
         );
         jd_reg_elimLayout.setVerticalGroup(
             jd_reg_elimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_reg_elimLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_reg_elimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(cb_RegElim_tab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_reg_elimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(cb_RegElim_reg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addComponent(btn_RegElim)
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jd_secLayout = new javax.swing.GroupLayout(jd_sec.getContentPane());
@@ -628,6 +751,17 @@ public class guiElcaro extends javax.swing.JFrame {
         );
         jd_secLayout.setVerticalGroup(
             jd_secLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -934,9 +1068,10 @@ public class guiElcaro extends javax.swing.JFrame {
     //BT para agregar un campo nuevo a una tabla
     private void btAgregarCrearCampoMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-        Tabla tabla= (Tabla) cb_camp_tab.getSelectedItem();
+        Tabla tabla = (Tabla) cb_camp_tab.getSelectedItem();
         String nom_campo = tfCrearCampoNombre.getText();
         int longitud = (int) sp_agreg_campo.getValue();
+        
     }
 
 
@@ -955,6 +1090,16 @@ public class guiElcaro extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < tablas.size(); i++) {
+            modelo.addElement(tablas.get(i).getNombre());
+        }
+        cb_reg_tab.setModel(modelo);
+        DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
+        for (int i = 0; i < tablas.size(); i++) {
+            modelo1.addElement(tablas.get(i).getCampos().toString());
+        }
+        cb_reg_cam.setModel(modelo1);
         jd_reg_agre.setModal(true);
         jd_reg_agre.pack();
         jd_reg_agre.setLocationRelativeTo(null);
@@ -971,7 +1116,11 @@ public class guiElcaro extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < tablas.size(); i++) {
+            modelo.addElement(tablas.get(i).getNombre());
+        }
+        cb_RegElim_tab.setModel(modelo);    
         jd_reg_elim.setModal(true);
         jd_reg_elim.pack();
         jd_reg_elim.setLocationRelativeTo(null);
@@ -980,9 +1129,8 @@ public class guiElcaro extends javax.swing.JFrame {
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
-
         int dialogbutton = JOptionPane.YES_NO_OPTION;
-        dialogbutton = JOptionPane.showConfirmDialog(null, "Are you sure?", "WARNING", dialogbutton);
+        dialogbutton = JOptionPane.showConfirmDialog(null, "Quiere guardar todos los cambios hechos?", "Advertencia", dialogbutton);
         if (dialogbutton == JOptionPane.YES_OPTION) {
             jdPrincipal.setVisible(false);
             tablas.clear();
@@ -1043,7 +1191,7 @@ public class guiElcaro extends javax.swing.JFrame {
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
         // TODO add your handling code here:
         jd_help.setVisible(false);
-         boolean bl = false;
+        boolean bl = false;
         File fichero = null;
         JFileChooser jfc = new JFileChooser();
         try {
@@ -1078,6 +1226,34 @@ public class guiElcaro extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        Tabla tabla = (Tabla) cb_reg_tab.getSelectedItem();
+        Campo campo = (Campo) cb_reg_cam.getSelectedItem();
+        String dato = txt_reg_dato.getText();
+        registros.add(new Registro(Contadordeposicionpararegistro, campo, dato, tabla));
+        Contadordeposicionpararegistro++;
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void cb_RegElim_tabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_RegElim_tabItemStateChanged
+        // TODO add your handling code here:
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        int pos=cb_RegElim_tab.getSelectedIndex();
+        for (int i = 0; i < tablas.size(); i++) {
+            if(pos==i){
+                modelo.addElement(tablas.get(i).getRegistros());
+            }
+        }       
+        cb_RegElim_reg.setModel(modelo);  
+    }//GEN-LAST:event_cb_RegElim_tabItemStateChanged
+
+    private void btn_RegElimMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegElimMouseClicked
+        // TODO add your handling code here:
+        int pos1=cb_RegElim_reg.getSelectedIndex();
+        Posicion pos= new Posicion(pos1); 
+        pila.push(pos);
+    }//GEN-LAST:event_btn_RegElimMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1130,16 +1306,23 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JButton btNuevoDB;
     private javax.swing.JButton btNuevoDB3;
     private javax.swing.JButton btSave;
+    private javax.swing.JButton btn_RegElim;
     private javax.swing.JButton btn_config_crear_db;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox cb_RegElim_reg;
+    private javax.swing.JComboBox cb_RegElim_tab;
     private javax.swing.JComboBox cb_camp_tab;
+    private javax.swing.JComboBox cb_reg_cam;
+    private javax.swing.JComboBox cb_reg_tab;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1169,7 +1352,14 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1201,9 +1391,25 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JSpinner sp_agreg_campo;
     private javax.swing.JTextField tfCrearCampoNombre;
     private javax.swing.JTextField txt_crear_archivo_nombre;
+    private javax.swing.JTextField txt_reg_dato;
     // End of variables declaration//GEN-END:variables
     public static ArrayList<Tabla> tablas = new ArrayList();
     public static ArrayList<Campo> campos = new ArrayList();
     public static ArrayList<Registro> registros = new ArrayList();
     bits b = new bits();
+    PilaPosicion pila=new PilaPosicion();
+//    try {
+//            archivo = new File(f.getPath() + "/" + nom + ".pitydb");
+//            fw = new FileWriter(archivo, true);
+//            bw = new BufferedWriter(fw);
+//            bw.write(tipo + ",");
+//            bw.flush();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                bw.close();
+//                fw.close();
+//            } catch (IOException ex) {
+//            }
 }

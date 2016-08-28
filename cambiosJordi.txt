@@ -1,5 +1,6 @@
 btCrearArchivoMouseClicked
 	Validar que el usuario haya elegido una carpeta y que no exista un archivo con ese nombre
+	*** Solo puede elegir carpetas, si hay un archivo con el mismo nombre, lo sobreescribe***
 
 jd_configuracion
 	//////////////////////////////////////////////////////////agregar opcion de como quiere que se dividan los campos, delimitadores, etc
@@ -16,7 +17,7 @@ jdPrincipal
 	//////////////////////////////////////////////////////////Hacer que cuando apriete el boton de equis que pida al usuario si quiere guardar o no y que cuando cierre que limpie el arraylist del codio principal
 	//////////////////////////////////////////////////////////Agregar boton de modificar registro (ya esta el icono en la carpeta)
 	//////////////////////////////////////////////////////////Agregar boton de eliminar registro (me mandaran el icono despues)
-	Programar boton de agregar registro
+	//////////////////////////////////////////////////////////Programar boton de agregar registro
 
 Clase Registro
 	//////////////////////////////////////////////////////////agregar int posicion (variable, constructor, getters&setters)

@@ -6,31 +6,50 @@ import java.util.ArrayList;
 public class Registro implements Serializable {
     private int posicion;
     private static final long serialVersionUID = 666L;
-    ArrayList <Campo> campos = new ArrayList<Campo>();
+    Campo campo; 
+    String dato;
+    Tabla tabla;
     
-
+    
     public Registro() {
     }
 
-    public Registro(int posicion,ArrayList <Campo> campos) {
+    public Registro(int posicion, Campo campo, String dato, Tabla tabla) {
         this.posicion = posicion;
-        this.campos= campos;
-    }
-    
-    public ArrayList<Campo> getCampos() {
-        return campos;
-    }
-
-    public void setCampos(ArrayList<Campo> campos) {
-        this.campos = campos;
-    }
-
+        this.campo = campo;
+        this.dato = dato;
+        this.tabla = tabla;
+    }        
     public int getPosicion() {
         return posicion;
     }
 
     public void setPosicion(int posicion) {
         this.posicion = posicion;
+    }
+
+    public Campo getCampo() {
+        return campo;
+    }
+
+    public void setCampo(Campo campo) {
+        this.campo = campo;
+    }
+
+    public String getDato() {
+        return dato;
+    }
+
+    public void setDato(String dato) {
+        this.dato = dato;
+    }
+
+    public Tabla getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(Tabla tabla) {
+        this.tabla = tabla;
     }
     
     

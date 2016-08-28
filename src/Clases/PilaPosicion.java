@@ -16,6 +16,10 @@ public class PilaPosicion {
     NodoPosicion head;
     int tamaño;
 
+    public PilaPosicion() {
+    }
+    
+
     public PilaPosicion(NodoPosicion head, int tamaño) {
         this.head = head;
         this.tamaño = tamaño;
