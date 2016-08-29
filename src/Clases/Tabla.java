@@ -39,13 +39,18 @@ public class Tabla implements Serializable {
         this.Registros = Registros;
     }   
 
+//    @Override
+//    public String toString() {
+//        String camposDeTabla = "";
+//        for (Registro r : Registros) {
+//            //camposDeTabla += "\n" + c.getNombre();
+//        }
+//        return camposDeTabla;
+//    }
+
     @Override
     public String toString() {
-        String camposDeTabla = "";
-        for (Registro r : Registros) {
-            //camposDeTabla += "\n" + c.getNombre();
-        }
-        return camposDeTabla;
+        return "Tabla{" + "nombre=" + nombre + '}';
     }
-
+    
 }

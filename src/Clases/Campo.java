@@ -8,6 +8,11 @@ public class Campo implements Serializable {
     int tamano;
     String tipo;
 
+    public Campo(String nombre) {
+        this.nombre = nombre;
+    }
+    
+
     public Campo(String nombre, int tamano, String tipo) {
         this.nombre = nombre;
         this.tamano = tamano;

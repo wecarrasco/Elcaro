@@ -14,6 +14,10 @@ public class Registro implements Serializable {
     public Registro() {
     }
 
+    public Registro(String dato) {
+        this.dato = dato;
+    }
+    
     public Registro(int posicion, Campo campo, String dato, Tabla tabla) {
         this.posicion = posicion;
         this.campo = campo;
@@ -50,6 +54,11 @@ public class Registro implements Serializable {
 
     public void setTabla(Tabla tabla) {
         this.tabla = tabla;
+    }
+
+    @Override
+    public String toString() {
+        return "Registro{" + "dato=" + dato + '}';
     }
     
     

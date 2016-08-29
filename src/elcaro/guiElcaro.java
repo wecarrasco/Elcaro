@@ -15,6 +15,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -32,6 +33,9 @@ public class guiElcaro extends javax.swing.JFrame {
     JFileChooser jf = new JFileChooser();
     int Contadordeposicionpararegistro;
     String separador = "";
+    String tipo = "";
+    String nombre = "";
+    int cant_registros = 0;
 
     /**
      * Creates new form guiElcaro
@@ -900,7 +904,7 @@ public class guiElcaro extends javax.swing.JFrame {
     //BT para configurar la creacion de la BD
     private void btn_config_crear_dbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_config_crear_dbMouseClicked
         // TODO add your handling code here:
-        String tipo = "";
+
         if (rb_config_fija.isSelected()) {
             tipo = "Fijo";
         } else {
@@ -919,12 +923,32 @@ public class guiElcaro extends javax.swing.JFrame {
 //        campos.add(new Campo(nom_campo, longitud, "ID"));
 //        tablas.add(new Tabla("Tabla 1", campos));
         //Crear archivo
-        Tabla t = new Tabla("Tabla 1", new Campo("ID", 5, "String"));
-        tablas.add(t);
+        nombre = txt_crear_archivo_nombre.getText();
+//        Tabla t = new Tabla("Tabla 1", new Campo("ID", 5, "String"));
+//        tablas.add(t);
+//        try {
+//            b.escribir(jlCarpetaCrearArchivo.getText() + "\\" + txt_crear_archivo_nombre.getText() + ".pitydb", new Archivo(t));
+//        } catch (IOException ex) {
+//            Logger.getLogger(guiElcaro.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        File archivo;
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        f = jf.getSelectedFile();
         try {
-            b.escribir(jlCarpetaCrearArchivo.getText() + "\\" + txt_crear_archivo_nombre.getText() + ".pitydb", new Archivo(t));
-        } catch (IOException ex) {
-            Logger.getLogger(guiElcaro.class.getName()).log(Level.SEVERE, null, ex);
+            archivo = new File(f.getPath() + "/" + nombre + ".pitydb");
+            fw = new FileWriter(archivo, true);
+            bw = new BufferedWriter(fw);
+            bw.write(tipo + ",");
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException ex) {
+            }
         }
         System.out.println("Archivo creado");
         //Crear archivo
@@ -937,8 +961,7 @@ public class guiElcaro extends javax.swing.JFrame {
         DefaultTableModel modeloTabla = new DefaultTableModel();
         modeloTabla.setColumnIdentifiers(new String[]{"ID"});
         modeloTabla.addRow(new String[]{"123"});
-        
-        
+
         jlistTablas.setModel(modelo);
         jTable1.setModel(modeloTabla);
         jlNombreDB.setText(txt_crear_archivo_nombre.getText());
@@ -966,16 +989,52 @@ public class guiElcaro extends javax.swing.JFrame {
                 fichero = jfc.getSelectedFile();
                 fr = new FileReader(fichero);
                 br = new BufferedReader(fr);
-                String linea;
-//                while((linea=br.readLine())!=null){
-//                    ta_1.append(linea+"\n");
-//                }
+                Scanner sc = null;
+                Scanner sc1 = null;
+                Scanner sc2 = null;
+                Scanner sc3 = null;
+                Scanner sc4 = null;
+                Scanner sc5 = null;
+                tablas = new ArrayList();
+                try {
+                    System.out.println("jajaja");
+                    sc = new Scanner(f);
+                    System.out.println("jejejeje");
+                    sc.useDelimiter(";");
+                    sc.useDelimiter("-");
+                    sc.useDelimiter(":");
+                    sc.useDelimiter(".");
+                    sc.useDelimiter("|");
+                    sc.useDelimiter(",");
+                    System.out.println("asdsdsad");
+                    while (sc.hasNext()) {
+                        System.out.println("hola");
+                        nombre = sc.next();
+                        tipo = sc.next();
+                        separador = sc.next();
+                        cant_registros = sc.nextInt();
+                        campos.add(new Campo(sc.next()));
+                        registros.add(new Registro(sc.next()));
+                    }
+                } catch (Exception e) {
+                } finally {
+                    sc.close();
+                }
                 jlNombreDB.setText(fichero.getName());
             } else {
                 JOptionPane.showMessageDialog(null, "Archivo no valido");
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        for (int i = 0; i < registros.size(); i++) {
+            System.out.println(registros.toString() + "|");
+        }
+        for (int i = 0; i < campos.size(); i++) {
+            System.out.println(campos.toString() + ",");
+        }
+        for (int i = 0; i < tablas.size(); i++) {
+            System.out.println(tablas.toString() + ";");
         }
         jdPrincipal.setModal(true);
         jdPrincipal.pack();
@@ -1043,7 +1102,7 @@ public class guiElcaro extends javax.swing.JFrame {
         }
         modelo.addRow(new String[]{""});
         jtAgregarRegistro.setModel(modelo);
-        
+
         jd_reg_agre.setModal(true);
         jd_reg_agre.pack();
         jd_reg_agre.setLocationRelativeTo(null);
@@ -1076,39 +1135,72 @@ public class guiElcaro extends javax.swing.JFrame {
         int dialogbutton = JOptionPane.YES_NO_OPTION;
         dialogbutton = JOptionPane.showConfirmDialog(null, "Quiere guardar todos los cambios hechos?", "Advertencia", dialogbutton);
         if (dialogbutton == JOptionPane.YES_OPTION) {
-            for (int i = 0; i < tablas.size(); i++) {
-                Tabla t = tablas.get(i);
-                try {
-                    b.escribir(jlCarpetaCrearArchivo.getText() + "\\" + txt_crear_archivo_nombre.getText() + ".pitydb", new Archivo(t));
-                } catch (IOException ex) {
-                    Logger.getLogger(guiElcaro.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+//            for (int i = 0; i < tablas.size(); i++) {
+//                Tabla t = tablas.get(i);
+//                try {
+//                    b.escribir(jlCarpetaCrearArchivo.getText() + "\\" + txt_crear_archivo_nombre.getText() + ".pitydb", new Archivo(t));
+//                } catch (IOException ex) {
+//                    Logger.getLogger(guiElcaro.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
             //ESTO ES PARA GUARDAR EN TEXTO PARA EL SAVE CON EL TIPO POR SI NO FUNCIONA EL DE ARRIBA
             File archivo;
             FileWriter fw = null;
             BufferedWriter bw = null;
             f = jf.getSelectedFile();
             try {
-                archivo = new File(f.getPath() + "/" + "nombre del archivo" + ".pitydb");
+                archivo = new File(f.getPath() + "/" + nombre + ".pitydb");
                 fw = new FileWriter(archivo, true);
                 bw = new BufferedWriter(fw);
+                int cant_registros = 0;
+                for (int i = 0; i < tablas.size(); i++) {
+                    for (int j = 0; j < tablas.get(i).getRegistros().size(); j++) {
+                        cant_registros = tablas.get(i).getRegistros().size();
+                    }
+                }
                 if (separador.contentEquals("Delimitador")) {
+                    bw.write(nombre + ";");
+                    bw.write(tipo + "-");
+                    bw.write(separador + ":");
+                    bw.write(cant_registros + ".");
+                    for (int i = 0; i < tablas.size(); i++) {
+                        for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
+                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "|");
+                        }
+                    }
                     for (int i = 0; i < tablas.size(); i++) {
                         for (int j = 0; j < tablas.get(i).getRegistros().size(); j++) {
                             bw.write(tablas.get(i).getRegistros().get(j).getDato() + ",");
                         }
                     }
                 } else if (separador.contentEquals("Indicador")) {
+                    bw.write(nombre + ";");
+                    bw.write(tipo + "-");
+                    bw.write(separador + ":");
+                    bw.write(cant_registros + ".");
                     for (int i = 0; i < tablas.size(); i++) {
                         for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
-                            bw.write(tablas.get(i).getCampos().get(j).getTamano() + tablas.get(i).getRegistros().get(j).getDato());
+                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "|");
+                        }
+                    }
+                    for (int i = 0; i < tablas.size(); i++) {
+                        for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
+                            bw.write(tablas.get(i).getCampos().get(j).getTamano() + tablas.get(i).getRegistros().get(j).getDato() + ",");
                         }
                     }
                 } else if (separador.contentEquals("Expresiones")) {
+                    bw.write(nombre + ";");
+                    bw.write(tipo + "-");
+                    bw.write(separador + ":");
+                    bw.write(cant_registros + ".");
                     for (int i = 0; i < tablas.size(); i++) {
                         for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
-                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "=" + tablas.get(i).getRegistros().get(j).getDato());
+                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "|");
+                        }
+                    }
+                    for (int i = 0; i < tablas.size(); i++) {
+                        for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
+                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "=" + tablas.get(i).getRegistros().get(j).getDato() + ",");
                         }
                     }
                 }
@@ -1125,10 +1217,12 @@ public class guiElcaro extends javax.swing.JFrame {
             jdPrincipal.setVisible(false);
             tablas.clear();
             Contadordeposicionpararegistro = 0;
+            separador = "";
         } else {
             jdPrincipal.setVisible(false);
             tablas.clear();
             Contadordeposicionpararegistro = 0;
+            separador = "";
         }
 
     }//GEN-LAST:event_jButton6MouseClicked
@@ -1221,13 +1315,13 @@ public class guiElcaro extends javax.swing.JFrame {
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
-        Object [] row = new Object[jtAgregarRegistro.getColumnCount()];
+        Object[] row = new Object[jtAgregarRegistro.getColumnCount()];
         for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
             System.out.println("entra");
             row[i] = jtAgregarRegistro.getModel().getValueAt(0, i);
         }
-        
-        DefaultTableModel modeloTabla = (DefaultTableModel)jTable1.getModel();
+
+        DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
         modeloTabla.addRow(row);
         jTable1.setModel(modeloTabla);
         jtAgregarRegistro.removeAll();
