@@ -14,6 +14,14 @@ public class Tabla implements Serializable {
     public Tabla() {
     }
 
+    public Tabla(String nombre, String key, Object value) {
+        this.nombre = nombre;
+        Hashtable <String, Object> l = new Hashtable<String, Object>();
+        l.put(key, value);
+        this.lista.add(l);
+    }
+
+    
 
     public Tabla(String nombre, Campo c) {
         this.nombre = nombre;

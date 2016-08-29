@@ -218,6 +218,11 @@ public class guiElcaro extends javax.swing.JFrame {
                 jlistTablasMouseClicked(evt);
             }
         });
+        jlistTablas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jlistTablasValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jlistTablas);
 
         jdPrincipal.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 206, 114, 466));
@@ -932,7 +937,7 @@ public class guiElcaro extends javax.swing.JFrame {
 //        tablas.add(new Tabla("Tabla 1", campos));
         //Crear archivo
         nombre = txt_crear_archivo_nombre.getText();
-        Tabla t = new Tabla("Tabla 1", new Campo("ID", 5, "String"));
+        Tabla t = new Tabla("Tabla 1", "ID", "1234");
         tablas.add(t);
 //        try {
 //            b.escribir(jlCarpetaCrearArchivo.getText() + "\\" + txt_crear_archivo_nombre.getText() + ".pitydb", new Archivo(t));
@@ -960,8 +965,7 @@ public class guiElcaro extends javax.swing.JFrame {
         }
         System.out.println("Archivo creado");
         //Crear archivo
-        
-        
+
         DefaultListModel modelo = new DefaultListModel();
         for (int i = 0; i < tablas.size(); i++) {
             modelo.addElement(tablas.get(i).getNombre());
@@ -1024,7 +1028,7 @@ public class guiElcaro extends javax.swing.JFrame {
                         separador = sc2.next();
                         cant_registros = sc3.nextInt();
                         campos.add(new Campo(sc4.next()));
-                        registros.add(new Registro(sc5.next()));
+//                        registros.add(new Registro(sc5.next()));
                     }
                 } catch (Exception e) {
                 } finally {
@@ -1183,7 +1187,7 @@ public class guiElcaro extends javax.swing.JFrame {
                     }
                     for (int i = 0; i < tablas.size(); i++) {
                         for (int j = 0; j < tablas.get(i).getRegistros().size(); j++) {
-                            bw.write(tablas.get(i).getRegistros().get(j).getDato() + ",");
+//                            bw.write(tablas.get(i).getRegistros().get(j).getDato() + ",");
                         }
                     }
                 } else if (separador.contentEquals("Indicador")) {
@@ -1198,7 +1202,7 @@ public class guiElcaro extends javax.swing.JFrame {
                     }
                     for (int i = 0; i < tablas.size(); i++) {
                         for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
-                            bw.write(tablas.get(i).getCampos().get(j).getTamano() + tablas.get(i).getRegistros().get(j).getDato() + ",");
+//                            bw.write(tablas.get(i).getCampos().get(j).getTamano() + tablas.get(i).getRegistros().get(j).getDato() + ",");
                         }
                     }
                 } else if (separador.contentEquals("Expresiones")) {
@@ -1213,7 +1217,7 @@ public class guiElcaro extends javax.swing.JFrame {
                     }
                     for (int i = 0; i < tablas.size(); i++) {
                         for (int j = 0; j < tablas.get(i).getCampos().size(); j++) {
-                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "=" + tablas.get(i).getRegistros().get(j).getDato() + ",");
+//                            bw.write(tablas.get(i).getCampos().get(j).getNombre() + "=" + tablas.get(i).getRegistros().get(j).getDato() + ",");
                         }
                     }
                 }
@@ -1327,38 +1331,39 @@ public class guiElcaro extends javax.swing.JFrame {
         String nombre = JOptionPane.showInputDialog(null, "Ingrese nombre de la tabla");
         Tabla t = new Tabla(nombre, new Campo("ID", 5, "String"));
         tablas.add(t);
-        
+
         DefaultListModel modelo = new DefaultListModel();
         for (int i = 0; i < tablas.size(); i++) {
             modelo.addElement(tablas.get(i).getNombre());
         }
         jlistTablas.setModel(modelo);
-        
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void btAgregarRegistro2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarRegistro2MouseClicked
         // TODO add your handling code here:
         Tabla t = new Tabla();
+
         for (int i = 0; i < tablas.size(); i++) {
-            if (((String)jlistTablas.getSelectedValue()).contentEquals(tablas.get(i).getNombre())) {
+            if (((String) jlistTablas.getSelectedValue()).contentEquals(tablas.get(i).getNombre())) {
                 t = tablas.get(i);
             }
         }
         Object[] row = new Object[jtAgregarRegistro.getColumnCount()];
-        String [] columnas = new String [jtAgregarRegistro.getColumnCount()];
+        String[] columnas = new String[jtAgregarRegistro.getColumnCount()];
         for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
             columnas[i] = jtAgregarRegistro.getColumnName(i);
         }
         Hashtable<String, Object> mapa = new Hashtable<String, Object>();
         for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
             System.out.println("entra");
-            row[i] = jtAgregarRegistro.getModel().getValueAt(0, i);           
+            row[i] = jtAgregarRegistro.getModel().getValueAt(0, i);
         }
-        
+
         for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
-            mapa.put(columnas[i], row [i]);
+            mapa.put(columnas[i], row[i]);
         }
-        
+
         t.addRegistro(mapa);
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
         modeloTabla.addRow(row);
@@ -1387,7 +1392,7 @@ public class guiElcaro extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_RegElimMouseClicked
 
     private void jlistTablasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistTablasMouseClicked
-        String nombre = (String)jlistTablas.getSelectedValue();
+        String nombre = (String) jlistTablas.getSelectedValue();
         Tabla t = new Tabla();
         for (int i = 0; i < tablas.size(); i++) {
             if (tablas.get(i).getNombre().contentEquals(nombre)) {
@@ -1395,29 +1400,44 @@ public class guiElcaro extends javax.swing.JFrame {
             }
         }
         System.out.println(t.getNombre());
-        Object [] row = new Object [t.getLista().get(0).size()];
-        ArrayList <String> columnass = new ArrayList<String>();
-        Enumeration co = t.getLista().get(0).keys();
-        int ite = 0;
-        columnass = Collections.list(co);
+        System.out.println(t.getLista().size());
+        Object[] row = new Object[0];
+        if (t.getLista().size() > 0) {
+            row = new Object[t.getLista().get(0).size()];
+            ArrayList<String> columnass = new ArrayList<String>();
+            Enumeration co = t.getLista().get(0).keys();
+            int ite = 0;
+            columnass = Collections.list(co);
 
-        /*for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
-            columnas [i] = t.getLista().get(0).;
-        }*/
-        System.out.println("Columnas: "+columnass);
-        jTable1.removeAll();
-        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
-        for (int i = 0; i < t.getLista().size(); i++) {
-            System.out.println("entra for 1");
-            for (int j = 0; j < columnass.size(); j++) { 
-                System.out.println("entra for 2");
-                row [j] = t.getRegistros().get(i).getCampos().get(columnass.get(j));
+            /*for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
+             columnas [i] = t.getLista().get(0).;
+             }*/
+            System.out.println("Columnas: " + columnass);
+            jTable1.removeAll();
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            for (int i = 0; i < t.getLista().size(); i++) {
+                System.out.println("entra for 1");
+                for (int j = 0; j < columnass.size(); j++) {
+                    System.out.println("entra for 2");
+                    row[j] = t.getRegistros().get(i).getCampos().get(columnass.get(j));
+                }
+                System.out.println(row);
+                modelo.addRow(row);
             }
-            System.out.println(row);
-            modelo.addRow(row);
+            jTable1.setModel(modelo);
+        }else{
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            for (int i = 0; modelo.getRowCount() > i; i++) {
+                modelo.removeRow(0);
+            }
         }
-        jTable1.setModel(modelo);
+
+
     }//GEN-LAST:event_jlistTablasMouseClicked
+
+    private void jlistTablasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistTablasValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlistTablasValueChanged
 
     /**
      * @param args the command line arguments
