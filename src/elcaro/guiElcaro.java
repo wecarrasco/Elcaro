@@ -15,6 +15,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -990,8 +991,7 @@ public class guiElcaro extends javax.swing.JFrame {
 
     //BT para abrir una bd
     private void btAbrirDBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAbrirDBMouseClicked
-        // TODO add your handling code here:
-        File fichero = null;
+File fichero = null;
         FileReader fr = null;
         BufferedReader br = null;
         try {
@@ -1004,32 +1004,40 @@ public class guiElcaro extends javax.swing.JFrame {
                 fr = new FileReader(fichero);
                 br = new BufferedReader(fr);
                 Scanner sc = null;
-                Scanner sc1 = null;
-                Scanner sc2 = null;
-                Scanner sc3 = null;
-                Scanner sc4 = null;
-                Scanner sc5 = null;
+//                Scanner sc1 = null;
+//                Scanner sc2 = null;
+//                Scanner sc3 = null;
+//                Scanner sc4 = null;
+//                Scanner sc5 = null;
                 tablas = new ArrayList();
                 try {
-                    System.out.println("jajaja");
                     sc = new Scanner(fichero);
-                    System.out.println("jejejeje");
-                    sc.useDelimiter(";");
-                    sc1.useDelimiter("-");
-                    sc2.useDelimiter(":");
-                    sc3.useDelimiter(".");
-                    sc4.useDelimiter("|");
-                    sc5.useDelimiter(",");
-                    System.out.println("asdsdsad");
-                    while (true) {
-                        System.out.println("hola");
-                        nombre = sc.next();
-                        tipo = sc1.next();
-                        separador = sc2.next();
-                        cant_registros = sc3.nextInt();
-                        campos.add(new Campo(sc4.next()));
-//                        registros.add(new Registro(sc5.next()));
+
+                    sc.useDelimiter("#");
+                    while (sc.hasNext()) {
+                        lineadelarchivo = sc.next();
                     }
+                    String[] linea = lineadelarchivo.split("#");
+                    for (int k = 0; k < linea.length; k++) {
+                        System.out.println(Arrays.toString(linea));
+                        String[] linea2 = lineadelarchivo.split(";");
+                        nombre = linea2[0];
+                        System.out.println(nombre);
+                        tipo = linea2[1];
+                        separador = linea2[2];
+                        cant_registros = Integer.parseInt(linea2[3]);
+                        String[] campo = linea2[4].split("\\|");
+                        String[] registro = linea2[5].split("&");
+                        Tabla t = new Tabla();
+                        t.setNombre(nombre);
+                        for (int i = 0; i < registro.length; i++) {
+                            String[] registro1 = registro[i].split(",");
+                            for (int j = 0; j < campo.length; j++) {
+                                mapa.put(campo[j], registro[i]);
+                            }
+                        }
+                    }
+
                 } catch (Exception e) {
                 } finally {
                     sc.close();
@@ -1040,18 +1048,6 @@ public class guiElcaro extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        System.out.println("registros");
-        for (int i = 0; i < registros.size(); i++) {
-            System.out.println(registros.toString() + "|");
-        }
-        System.out.println("campos");
-        for (int i = 0; i < campos.size(); i++) {
-            System.out.println(campos.toString() + ",");
-        }
-        System.out.println("tablas");
-        for (int i = 0; i < tablas.size(); i++) {
-            System.out.println(tablas.toString() + ";");
         }
         jdPrincipal.setModal(true);
         jdPrincipal.pack();
@@ -1577,5 +1573,6 @@ public class guiElcaro extends javax.swing.JFrame {
     public static ArrayList<Registro> registros = new ArrayList();
     bits b = new bits();
     PilaPosicion pila = new PilaPosicion();
-
+    String lineadelarchivo;
+    Hashtable <String, Object> mapa = new Hashtable <String, Object>();
 }
