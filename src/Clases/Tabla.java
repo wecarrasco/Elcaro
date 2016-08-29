@@ -9,6 +9,9 @@ public class Tabla implements Serializable {
     ArrayList <Campo> Campos = new ArrayList<Campo>();
     ArrayList<Registro> Registros = new ArrayList<Registro>();
 
+    public Tabla() {
+    }
+
 
     public Tabla(String nombre, Campo c) {
         this.nombre = nombre;
