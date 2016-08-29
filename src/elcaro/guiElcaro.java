@@ -998,23 +998,23 @@ public class guiElcaro extends javax.swing.JFrame {
                 tablas = new ArrayList();
                 try {
                     System.out.println("jajaja");
-                    sc = new Scanner(f);
+                    sc = new Scanner(fichero);
                     System.out.println("jejejeje");
                     sc.useDelimiter(";");
-                    sc.useDelimiter("-");
-                    sc.useDelimiter(":");
-                    sc.useDelimiter(".");
-                    sc.useDelimiter("|");
-                    sc.useDelimiter(",");
+                    sc1.useDelimiter("-");
+                    sc2.useDelimiter(":");
+                    sc3.useDelimiter(".");
+                    sc4.useDelimiter("|");
+                    sc5.useDelimiter(",");
                     System.out.println("asdsdsad");
-                    while (sc.hasNext()) {
+                    while (true) {
                         System.out.println("hola");
                         nombre = sc.next();
-                        tipo = sc.next();
-                        separador = sc.next();
-                        cant_registros = sc.nextInt();
-                        campos.add(new Campo(sc.next()));
-                        registros.add(new Registro(sc.next()));
+                        tipo = sc1.next();
+                        separador = sc2.next();
+                        cant_registros = sc3.nextInt();
+                        campos.add(new Campo(sc4.next()));
+                        registros.add(new Registro(sc5.next()));
                     }
                 } catch (Exception e) {
                 } finally {
@@ -1027,12 +1027,15 @@ public class guiElcaro extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("registros");
         for (int i = 0; i < registros.size(); i++) {
             System.out.println(registros.toString() + "|");
         }
+        System.out.println("campos");
         for (int i = 0; i < campos.size(); i++) {
             System.out.println(campos.toString() + ",");
         }
+        System.out.println("tablas");
         for (int i = 0; i < tablas.size(); i++) {
             System.out.println(tablas.toString() + ";");
         }
