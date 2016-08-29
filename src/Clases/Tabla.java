@@ -2,13 +2,15 @@ package Clases;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Tabla implements Serializable {
     private static final long serialVersionUID = 666L;
     private String nombre = "";
     ArrayList <Campo> Campos = new ArrayList<Campo>();
     ArrayList<Registro> Registros = new ArrayList<Registro>();
-
+    ArrayList <Hashtable<String, Object>> lista = new ArrayList <Hashtable<String, Object>>();
+    
     public Tabla() {
     }
 
@@ -42,6 +44,24 @@ public class Tabla implements Serializable {
         this.Registros = Registros;
     }   
 
+    public void addElementoRegistro(int index, String campo, Object valor){
+        lista.get(index).put(campo, valor);
+    }
+    
+    public void addRegistro (Hashtable <String, Object> mapa){
+        lista.add(mapa);
+    }
+
+    public ArrayList<Hashtable<String, Object>> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Hashtable<String, Object>> lista) {
+        this.lista = lista;
+    }
+    
+    
+    
 //    @Override
 //    public String toString() {
 //        String camposDeTabla = "";

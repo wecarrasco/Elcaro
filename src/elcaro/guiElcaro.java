@@ -15,6 +15,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -122,7 +126,7 @@ public class guiElcaro extends javax.swing.JFrame {
         jd_reg_modif = new javax.swing.JDialog();
         jd_reg_agre = new javax.swing.JDialog();
         jLabel36 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        btAgregarRegistro2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtAgregarRegistro = new javax.swing.JTable();
         jd_reg_elim = new javax.swing.JDialog();
@@ -624,13 +628,13 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel36.setText("Agregar Registro");
         jd_reg_agre.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
-        jButton7.setText("Guardar Registro");
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btAgregarRegistro2.setText("Guardar Registro");
+        btAgregarRegistro2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
+                btAgregarRegistro2MouseClicked(evt);
             }
         });
-        jd_reg_agre.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+        jd_reg_agre.getContentPane().add(btAgregarRegistro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
         jtAgregarRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -928,8 +932,8 @@ public class guiElcaro extends javax.swing.JFrame {
 //        tablas.add(new Tabla("Tabla 1", campos));
         //Crear archivo
         nombre = txt_crear_archivo_nombre.getText();
-//        Tabla t = new Tabla("Tabla 1", new Campo("ID", 5, "String"));
-//        tablas.add(t);
+        Tabla t = new Tabla("Tabla 1", new Campo("ID", 5, "String"));
+        tablas.add(t);
 //        try {
 //            b.escribir(jlCarpetaCrearArchivo.getText() + "\\" + txt_crear_archivo_nombre.getText() + ".pitydb", new Archivo(t));
 //        } catch (IOException ex) {
@@ -956,7 +960,8 @@ public class guiElcaro extends javax.swing.JFrame {
         }
         System.out.println("Archivo creado");
         //Crear archivo
-
+        
+        
         DefaultListModel modelo = new DefaultListModel();
         for (int i = 0; i < tablas.size(); i++) {
             modelo.addElement(tablas.get(i).getNombre());
@@ -967,6 +972,7 @@ public class guiElcaro extends javax.swing.JFrame {
         modeloTabla.addRow(new String[]{"123"});
 
         jlistTablas.setModel(modelo);
+        jlistTablas.setSelectedIndex(0);
         jTable1.setModel(modeloTabla);
         jlNombreDB.setText(txt_crear_archivo_nombre.getText());
         jdPrincipal.setModal(true);
@@ -1330,20 +1336,36 @@ public class guiElcaro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+    private void btAgregarRegistro2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarRegistro2MouseClicked
         // TODO add your handling code here:
+        Tabla t = new Tabla();
+        for (int i = 0; i < tablas.size(); i++) {
+            if (((String)jlistTablas.getSelectedValue()).contentEquals(tablas.get(i).getNombre())) {
+                t = tablas.get(i);
+            }
+        }
         Object[] row = new Object[jtAgregarRegistro.getColumnCount()];
+        String [] columnas = new String [jtAgregarRegistro.getColumnCount()];
+        for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
+            columnas[i] = jtAgregarRegistro.getColumnName(i);
+        }
+        Hashtable<String, Object> mapa = new Hashtable<String, Object>();
         for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
             System.out.println("entra");
-            row[i] = jtAgregarRegistro.getModel().getValueAt(0, i);
+            row[i] = jtAgregarRegistro.getModel().getValueAt(0, i);           
         }
-
+        
+        for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
+            mapa.put(columnas[i], row [i]);
+        }
+        
+        t.addRegistro(mapa);
         DefaultTableModel modeloTabla = (DefaultTableModel) jTable1.getModel();
         modeloTabla.addRow(row);
         jTable1.setModel(modeloTabla);
         jtAgregarRegistro.removeAll();
         jd_reg_agre.setVisible(true);
-    }//GEN-LAST:event_jButton7MouseClicked
+    }//GEN-LAST:event_btAgregarRegistro2MouseClicked
 
     private void cb_RegElim_tabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_RegElim_tabItemStateChanged
         // TODO add your handling code here:
@@ -1372,11 +1394,29 @@ public class guiElcaro extends javax.swing.JFrame {
                 t = tablas.get(i);
             }
         }
-        
-        Object [] row = new Object [t.getCampos().size()];
-        for (int i = 0; i < t.getRegistros().size(); i++) {
-            
+        System.out.println(t.getNombre());
+        Object [] row = new Object [t.getLista().get(0).size()];
+        ArrayList <String> columnass = new ArrayList<String>();
+        Enumeration co = t.getLista().get(0).keys();
+        int ite = 0;
+        columnass = Collections.list(co);
+
+        /*for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
+            columnas [i] = t.getLista().get(0).;
+        }*/
+        System.out.println("Columnas: "+columnass);
+        jTable1.removeAll();
+        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
+        for (int i = 0; i < t.getLista().size(); i++) {
+            System.out.println("entra for 1");
+            for (int j = 0; j < columnass.size(); j++) { 
+                System.out.println("entra for 2");
+                row [j] = t.getRegistros().get(i).getCampos().get(columnass.get(j));
+            }
+            System.out.println(row);
+            modelo.addRow(row);
         }
+        jTable1.setModel(modelo);
     }//GEN-LAST:event_jlistTablasMouseClicked
 
     /**
@@ -1423,6 +1463,7 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JButton btAbrirDB;
     private javax.swing.JButton btAgregarCrearCampo;
     private javax.swing.JButton btAgregarRegistro;
+    private javax.swing.JButton btAgregarRegistro2;
     private javax.swing.JButton btBorrarDB;
     private javax.swing.JButton btChooseFolder;
     private javax.swing.JButton btCrearArchivo;
@@ -1443,7 +1484,6 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
