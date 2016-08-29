@@ -11,8 +11,10 @@ public class Tabla implements Serializable {
 
     public Tabla() {
     }
-
-
+    
+    public Tabla(String nombre) {
+        this.nombre = nombre;
+    }
     public Tabla(String nombre, Campo c) {
         this.nombre = nombre;
         Campos.add(c);

@@ -42,6 +42,11 @@ public class Campo implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Campo{" + "nombre=" + nombre + '}';
+    }
     
     
     
