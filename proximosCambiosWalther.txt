@@ -21,3 +21,8 @@
 
 - El archivo mismo debe guardar su propia configuracion
 
+- jdAgregarRegistro
+	quitar seleccionar campo o repararlo
+
+- Validar que haya seleccionado carpeta al momento de crear uno nuevo
+
