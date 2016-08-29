@@ -74,11 +74,11 @@ public class guiElcaro extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         btCrearCampo = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btEliminarRegitro = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btAgregarRegistro = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btModificarRegistro = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jdCrearCampo = new javax.swing.JDialog();
@@ -119,13 +119,9 @@ public class guiElcaro extends javax.swing.JFrame {
         jd_reg_modif = new javax.swing.JDialog();
         jd_reg_agre = new javax.swing.JDialog();
         jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        cb_reg_tab = new javax.swing.JComboBox();
-        cb_reg_cam = new javax.swing.JComboBox();
-        txt_reg_dato = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtAgregarRegistro = new javax.swing.JTable();
         jd_reg_elim = new javax.swing.JDialog();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
@@ -271,37 +267,37 @@ public class guiElcaro extends javax.swing.JFrame {
         jLabel12.setText("Crear Tabla");
         jdPrincipal.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        jButton2.setText("Elim");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btEliminarRegitro.setText("Elim");
+        btEliminarRegitro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                btEliminarRegitroMouseClicked(evt);
             }
         });
-        jdPrincipal.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 70, 60));
+        jdPrincipal.getContentPane().add(btEliminarRegitro, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 70, 60));
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Nuevo Registro");
         jdPrincipal.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 106, 81, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevoRegistro.png"))); // NOI18N
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btAgregarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevoRegistro.png"))); // NOI18N
+        btAgregarRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                btAgregarRegistroMouseClicked(evt);
             }
         });
-        jdPrincipal.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 40, -1, 60));
+        jdPrincipal.getContentPane().add(btAgregarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 40, -1, 60));
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("Eliminar Registro");
         jdPrincipal.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, 20));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificarRegistro.png"))); // NOI18N
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btModificarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/modificarRegistro.png"))); // NOI18N
+        btModificarRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
+                btModificarRegistroMouseClicked(evt);
             }
         });
-        jdPrincipal.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 70, 60));
+        jdPrincipal.getContentPane().add(btModificarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 70, 60));
 
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Modificar Registro");
@@ -615,13 +611,10 @@ public class guiElcaro extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        jd_reg_agre.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel36.setText("Agregar Registro");
-
-        jLabel37.setText("Seleccionar Tabla:");
-
-        jLabel38.setText("Seleccionar Campo:");
-
-        jLabel39.setText("Dato a Guardar:");
+        jd_reg_agre.getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
         jButton7.setText("Guardar Registro");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -629,57 +622,19 @@ public class guiElcaro extends javax.swing.JFrame {
                 jButton7MouseClicked(evt);
             }
         });
+        jd_reg_agre.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
-        javax.swing.GroupLayout jd_reg_agreLayout = new javax.swing.GroupLayout(jd_reg_agre.getContentPane());
-        jd_reg_agre.getContentPane().setLayout(jd_reg_agreLayout);
-        jd_reg_agreLayout.setHorizontalGroup(
-            jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_reg_agreLayout.createSequentialGroup()
-                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jd_reg_agreLayout.createSequentialGroup()
-                            .addGap(156, 156, 156)
-                            .addComponent(jLabel36))
-                        .addGroup(jd_reg_agreLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel37)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cb_reg_tab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jd_reg_agreLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel38)
-                                .addComponent(jLabel39))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_reg_dato)
-                                .addComponent(cb_reg_cam, 0, 183, Short.MAX_VALUE))))
-                    .addGroup(jd_reg_agreLayout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jButton7)))
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-        jd_reg_agreLayout.setVerticalGroup(
-            jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_reg_agreLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel36)
-                .addGap(18, 18, 18)
-                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(cb_reg_tab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(cb_reg_cam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jd_reg_agreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel39)
-                    .addComponent(txt_reg_dato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(jButton7)
-                .addContainerGap(97, Short.MAX_VALUE))
-        );
+        jtAgregarRegistro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jScrollPane3.setViewportView(jtAgregarRegistro);
+
+        jd_reg_agre.getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 31, 496, 44));
 
         jLabel40.setText("Eliminar Registro");
 
@@ -981,7 +936,9 @@ public class guiElcaro extends javax.swing.JFrame {
 
         DefaultTableModel modeloTabla = new DefaultTableModel();
         modeloTabla.setColumnIdentifiers(new String[]{"ID"});
-
+        modeloTabla.addRow(new String[]{"123"});
+        
+        
         jlistTablas.setModel(modelo);
         jTable1.setModel(modeloTabla);
         jlNombreDB.setText(txt_crear_archivo_nombre.getText());
@@ -1077,33 +1034,31 @@ public class guiElcaro extends javax.swing.JFrame {
         jd_help.setVisible(false);
     }//GEN-LAST:event_jButton4MouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    //Boton Agregar Registro
+    private void btAgregarRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarRegistroMouseClicked
         // TODO add your handling code here:
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < tablas.size(); i++) {
-            modelo.addElement(tablas.get(i).getNombre());
+        DefaultTableModel modelo = new DefaultTableModel();
+        for (int i = 0; i < jTable1.getColumnCount(); i++) {
+            modelo.addColumn(jTable1.getColumnName(i));
         }
-        cb_reg_tab.setModel(modelo);
-        DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
-        for (int i = 0; i < tablas.size(); i++) {
-            modelo1.addElement(tablas.get(i).getCampos().toString());
-        }
-        cb_reg_cam.setModel(modelo1);
+        modelo.addRow(new String[]{""});
+        jtAgregarRegistro.setModel(modelo);
+        
         jd_reg_agre.setModal(true);
         jd_reg_agre.pack();
         jd_reg_agre.setLocationRelativeTo(null);
         jd_reg_agre.setVisible(true);
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_btAgregarRegistroMouseClicked
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+    private void btModificarRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btModificarRegistroMouseClicked
         // TODO add your handling code here:
         jd_reg_modif.setModal(true);
         jd_reg_modif.pack();
         jd_reg_modif.setLocationRelativeTo(null);
         jd_reg_modif.setVisible(true);
-    }//GEN-LAST:event_jButton5MouseClicked
+    }//GEN-LAST:event_btModificarRegistroMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void btEliminarRegitroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEliminarRegitroMouseClicked
         // TODO add your handling code here:
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < tablas.size(); i++) {
@@ -1114,7 +1069,7 @@ public class guiElcaro extends javax.swing.JFrame {
         jd_reg_elim.pack();
         jd_reg_elim.setLocationRelativeTo(null);
         jd_reg_elim.setVisible(true);
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_btEliminarRegitroMouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
@@ -1266,11 +1221,17 @@ public class guiElcaro extends javax.swing.JFrame {
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
-        Tabla tabla = (Tabla) cb_reg_tab.getSelectedItem();
-        Campo campo = (Campo) cb_reg_cam.getSelectedItem();
-        String dato = txt_reg_dato.getText();
-        registros.add(new Registro(Contadordeposicionpararegistro, campo, dato, tabla));
-        Contadordeposicionpararegistro++;
+        Object [] row = new Object[jtAgregarRegistro.getColumnCount()];
+        for (int i = 0; i < jtAgregarRegistro.getColumnCount(); i++) {
+            System.out.println("entra");
+            row[i] = jtAgregarRegistro.getModel().getValueAt(0, i);
+        }
+        
+        DefaultTableModel modeloTabla = (DefaultTableModel)jTable1.getModel();
+        modeloTabla.addRow(row);
+        jTable1.setModel(modeloTabla);
+        jtAgregarRegistro.removeAll();
+        jd_reg_agre.setVisible(true);
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void cb_RegElim_tabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_RegElim_tabItemStateChanged
@@ -1335,11 +1296,14 @@ public class guiElcaro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAbrirDB;
     private javax.swing.JButton btAgregarCrearCampo;
+    private javax.swing.JButton btAgregarRegistro;
     private javax.swing.JButton btBorrarDB;
     private javax.swing.JButton btChooseFolder;
     private javax.swing.JButton btCrearArchivo;
     private javax.swing.JButton btCrearCampo;
+    private javax.swing.JButton btEliminarRegitro;
     private javax.swing.JButton btLockDB;
+    private javax.swing.JButton btModificarRegistro;
     private javax.swing.JButton btNuevoDB;
     private javax.swing.JButton btNuevoDB3;
     private javax.swing.JButton btSave;
@@ -1350,13 +1314,8 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JComboBox cb_RegElim_reg;
     private javax.swing.JComboBox cb_RegElim_tab;
     private javax.swing.JComboBox cb_camp_tab;
-    private javax.swing.JComboBox cb_reg_cam;
-    private javax.swing.JComboBox cb_reg_tab;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
@@ -1389,9 +1348,6 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -1403,6 +1359,7 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1419,6 +1376,7 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JLabel jlCarpetaCrearArchivo;
     private javax.swing.JLabel jlNombreDB;
     private javax.swing.JList jlistTablas;
+    private javax.swing.JTable jtAgregarRegistro;
     private javax.swing.JRadioButton rb_config_fija;
     private javax.swing.JRadioButton rb_config_var;
     private javax.swing.JRadioButton rb_sep_del;
@@ -1427,7 +1385,6 @@ public class guiElcaro extends javax.swing.JFrame {
     private javax.swing.JSpinner sp_agreg_campo;
     private javax.swing.JTextField tfCrearCampoNombre;
     private javax.swing.JTextField txt_crear_archivo_nombre;
-    private javax.swing.JTextField txt_reg_dato;
     // End of variables declaration//GEN-END:variables
     public static ArrayList<Tabla> tablas = new ArrayList();
     public static ArrayList<Campo> campos = new ArrayList();
